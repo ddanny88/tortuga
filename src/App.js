@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import Navbar from './components/Navbar/Navbar';
+import {Provider} from 'react-redux';
+import store from './store';
+import routes from './routes';
+import Navigation from './components/Navbar/Navigation';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Navbar />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <Navigation />
+          {routes}
+        </div>
+      </Provider>
     );
   }
 }

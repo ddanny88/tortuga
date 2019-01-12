@@ -1,0 +1,28 @@
+.nav-bar-container{
+    width: 100vw;
+    height: 70px;
+    background-color: rgb(0, 33, 39);
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    padding-top: 15px;
+    
+}
+
+.list-item{
+    list-style: none;
+}
+
+.login-button{
+    width: 85px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background: rgb(48, 114, 103);
+    color: white;
+    padding: 10px;
+}
+.login-button:hover{
+    background: rgb(0, 140, 120);
+
+}
