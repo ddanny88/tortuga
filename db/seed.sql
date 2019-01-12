@@ -8,6 +8,7 @@ CREATE TABLE products (
 
 CREATE TABLE customer (
     customer_id SERIAL PRIMARY KEY,
+    is_admin BOOLEAN DEFAULT FALSE, 
     firstName VARCHAR(50),
     lastName VARCHAR(50),
     phone VARCHAR(24),
