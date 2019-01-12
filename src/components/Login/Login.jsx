@@ -17,11 +17,16 @@ class Login extends Component {
     }
 
     
-    // login = () => {
-    //    const { username, password } = this.props;
-    //    axios.post('/api/auth/login', {username, password})
-    //    .then(user) 
-    // }
+    login = () => {
+       const { username, password } = this.props;
+        axios.post('/api/auth/login', {username, password})
+            .then(user => {
+                console.log(user)
+            }) 
+            .catch(err => {
+                alert('Unauthorized User.', err)
+            })
+    }
 
 
 
@@ -43,7 +48,7 @@ class Login extends Component {
                     className="login-input" 
                     value={password}
                />
-               <button className="form-button">login</button>
+               <button  onClick={this.login} className="form-button">login</button>
                 
             </div>
         );

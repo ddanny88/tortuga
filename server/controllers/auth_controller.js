@@ -1,39 +1,61 @@
 const bcrypt = require('bcryptjs');
 
+
+
 const login = (req, res) => {
     const db = req.app.get('db');
-
     db.get_user(req.body.username)
-    .then(response => {
-        let user = response[0];
-        // console.log(user);
-        if(!user){
-            res.status(401).json('USER NOT FOUND.')
-        } else {
-            // console.log(user.hash)
-            let isAuthenticated = bcrypt.compareSync(req.body.password, user.hash)
-            // returns a boolean 
-            if(!isAuthenticated){
-                res.status(403).json('INCORRECT PASSWORD.');
+        .then(response => {
+            console.log(response);
+            let user = response[0];
+            console.log(user);
+            if(!user){
+                res.status(401).json('USER NOT FOUND.');
             } else {
-                req.session.user = {
-                    id: user.id,
-                    isAdmin: user.is_admin,
-                    username: user.username,
+                let isAuthenticated = bcrypt.compareSync(req.body.password, user.password) 
+                console.log(isAuthenticated);
+                if(!isAuthenticated){
+                    res.status(403).json('INCORRECT PASSWORD.');
+                } else {
+                    // put the user on session: 
+                    req.session.user = {
+                        username: user.username
+                    }
+                    console.log(req.session.user)
+                    res.status(200).json(req.session.user);
                 }
-                console.log('The user on session is: ')
-                res.status(200).json(req.session.user);
             }
-        }
-    })
-    .catch(err=>{
-        console.log('err: ', err)
-    });
-}
+        })
+        .catch(err=>{
+            console.log(`***${err}***`)
+        });
+};
 
 const register = (req, res) => {
+    const { firstName, lastName, email, username, password } = req.body;
     const db = req.app.get('db');
-    db.add_user()
+    db.get_user(username)
+    .then(response => {
+        if(response.length === 0) {
+            const salt = bcrypt.genSaltSync(10);
+            const hash = bcrypt.hashSync(password, salt);
+            db.register_user(firstName, lastName, email, username,  hash)
+                .then(response => {
+                    let user = response[0];
+                    console.log(user);
+                    req.session.user = {
+                        username: user.username
+                    }
+                    console.log(req.session.user);
+                    res.status(200).json(req.session.user)
+                })
+        } else {
+            res.status(401).json('USER ALREADY EXISTS.')
+        }
+    })
+    .catch(err=> {
+        console.log(`***${err}***`)
+    })
 }
 
 

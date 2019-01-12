@@ -26,10 +26,10 @@ class Registration extends Component {
         this.props.updateEmail(e.target.value);
     }
 
-    register = () => {
-        const { firstName, lastName, username, password, email } = this.props
-        axios.post('/api/auth/register', {firstName, lastName, username, password, email})
-    }
+    // register = () => {
+    //     const { firstName, lastName, username, password, email } = this.props
+    //     axios.post('/api/auth/register', {firstName, lastName, username, password, email})
+    // }
 
     render() {
         const {firstName, lastName, username, password, email} = this.props;

@@ -1,6 +1,7 @@
 import React from 'react';
 import'./nav.css';
 import {Link} from 'react-router-dom';
+// import Modal from 'react-responsive-modal';
 
 
 

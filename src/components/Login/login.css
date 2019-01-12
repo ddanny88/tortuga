@@ -31,3 +31,22 @@
     /* no border on the input */
     border: none;
 }
+
+
+
+
+/* modal styling:  */
+
+.modal {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid #ccc;
+    background: white;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    display: block;
+}
