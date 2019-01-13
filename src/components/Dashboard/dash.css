@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+.hero-img{
+    /* darkenig of the hero image */
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../../assets/images/wine_hero10.png');
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 2;
+}
+/* wine_hero10 */
+/* white_liqor2 */
+/* main_liquor */
+
+
+
+.main-heading{
+    color: white;
+    font-size: 200%;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+}
+.hero-btn{
+    text-align: center;
+    padding: 10px 30px;
+    border-radius: 5px;
+    border:none;
+}

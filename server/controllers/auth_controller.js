@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 
 
-
+// USER LOGIN: 
 const login = (req, res) => {
     const db = req.app.get('db');
     db.get_user(req.body.username)
@@ -31,6 +31,7 @@ const login = (req, res) => {
         });
 };
 
+// USER REGISTRATION: 
 const register = (req, res) => {
     const { firstName, lastName, email, username, password } = req.body;
     const db = req.app.get('db');
@@ -58,8 +59,14 @@ const register = (req, res) => {
     })
 }
 
+// USER SIGNOUT: 
+const signOut = (req, res) => {
+    req.session.destroy();
+    res.status(200).json('SESSION TERMINATED...')
+}
 
 module.exports = {
     login,
-    register
+    register,
+    signOut
 }

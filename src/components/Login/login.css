@@ -1,5 +1,6 @@
 .login-form{
-    border: 1px solid red;
+    
+    background-color: rgb(177, 63, 63);
     width: 300px;
     height: 400px;
     margin: 0 auto;
@@ -8,6 +9,10 @@
     flex-direction: column;
     margin-top:30px;
     justify-content: center;
+    border-radius: 40px;
+    z-index: 1;
+    position: fixed;
+   
     
 }
 
@@ -16,10 +21,11 @@
     height: 30px;
     border-radius: 5px;
     border: none;
-    background: rgb(48, 114, 103);
+    background: rgb(184, 20, 20);
     color: white;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 5px;
+    margin-top: 20px;
+    cursor: pointer;
 }
 
 .login-input{
@@ -31,13 +37,23 @@
     /* no border on the input */
     border: none;
 }
-
+#close{
+    color: #aaaaaa;
+    font-size: 28px;
+    font-weight: bold;
+}
+#close:hover,
+#close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 
 
 /* modal styling:  */
 
-.modal {
+/* .modal {
     position: fixed;
     top: 40px;
     right: 40px;
@@ -49,4 +65,4 @@
     outline: none;
     padding: 20px;
     display: block;
-}
+} */

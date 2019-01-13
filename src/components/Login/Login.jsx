@@ -35,6 +35,7 @@ class Login extends Component {
         const {username, password } = this.props;
         return (
             <div className="login-form">
+                <span id="close">&times;</span>
                 <p>logo here</p>
                <input 
                     onChange={this.handleUsername} 
@@ -48,9 +49,8 @@ class Login extends Component {
                     className="login-input" 
                     value={password}
                />
-               <button  onClick={this.login} className="form-button">login</button>
-                
-            </div>
+               <button  onClick={this.login} className="form-button">login</button> 
+            </div> 
         );
     }
 }

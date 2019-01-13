@@ -33,6 +33,7 @@ app.use(
 // authorization endpoints: 
 app.post('/api/auth/login', authController.login);
 app.post('/api/auth/register', authController.register);
+app.get('/api/auth/signout', authController.signOut);
 
 
 

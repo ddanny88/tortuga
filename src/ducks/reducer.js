@@ -12,6 +12,7 @@ const initialState = {
     city: '',
     st: '',
     zipcode: 0,
+    openModal: false, 
 
     // products
     products: []
@@ -32,6 +33,8 @@ const UPDATE_ADDRESS = "UPDATE_ADDRESS";
 const UPDATE_CITY = "UPDATE_CITY";
 const UPDATE_ST = "UPDATE_ST";
 const UPDATE_ZIP = "UPDATE_ZIP";
+
+const HANDLE_MODAL = "HANDLE_MODAL";
 
 
 // ACTION FUNCTIONS: 
@@ -106,6 +109,15 @@ export function updatePhone(phone){
 }
 
 
+// handles the modal: 
+export function toggleModal() {
+    return {
+        type: HANDLE_MODAL,
+        payload: !initialState.openModal
+    }
+}
+
+
 
 // REDUCER FUNCTION: 
 function reducer (state = initialState, action) {
@@ -167,6 +179,11 @@ function reducer (state = initialState, action) {
             return {
                 ...state,
                 phone: action.payload
+            }
+        case HANDLE_MODAL: 
+            return {
+                ...state,
+                openModal: action.payload
             }
         default:
             return state;
