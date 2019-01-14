@@ -37,6 +37,7 @@ const UPDATE_ZIP = "UPDATE_ZIP";
 const HANDLE_MODAL = "HANDLE_MODAL";
 
 
+
 // ACTION FUNCTIONS: 
 export function getProducts(){
     return {
@@ -110,10 +111,10 @@ export function updatePhone(phone){
 
 
 // handles the modal: 
-export function toggleModal() {
+export function toggleModal(toggle) {
     return {
         type: HANDLE_MODAL,
-        payload: !initialState.openModal
+        payload: toggle
     }
 }
 

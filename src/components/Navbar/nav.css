@@ -61,10 +61,19 @@ align-items: center; */
 .main-nav li a:link, 
 .main-nav li a:visited {
     border-bottom: 2px solid transparent;
-    transition: border-bottom 0.2s;
+    transition: border-bottom 0.3s;
 }
 
 .main-nav li a:hover, 
 .main-nav li a:active {
     border-bottom: 2px solid rgb(184, 20, 20);
+}
+
+.fa-shopping-cart{
+    color: white;
+    font-size: 25px;
+}
+
+.fa-shopping-cart:hover {
+    color: gainsboro;
 }

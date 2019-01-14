@@ -11,7 +11,7 @@ import {toggleModal} from '../../ducks/reducer';
 class Navigation extends Component {
     // when login is clicked , openModal will open. 
     modal = () => {
-        this.props.toggleModal();
+        this.props.toggleModal(!this.props.openModal);
     }
 
     render(){
@@ -24,6 +24,7 @@ class Navigation extends Component {
                     <ul className="main-nav">
                         <li><button className="login-button" onClick={this.modal}>login</button></li>
                         <li><Link to='/register'>signup</Link></li>
+                        <li><i className="fas fa-shopping-cart"></i></li>
                     </ul>
             </div> 
         </nav>

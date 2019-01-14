@@ -1,4 +1,4 @@
-.login-form{
+ /* .login-form{
     
     background-color: rgb(177, 63, 63);
     width: 300px;
@@ -15,6 +15,7 @@
    
     
 }
+   
 
 .form-button{
     width: 200px;
@@ -26,15 +27,13 @@
     padding: 5px;
     margin-top: 20px;
     cursor: pointer;
-}
+} */
 
-.login-input{
+/* .login-input{
     width: 200px;
     margin: 5px;
     height: 25px;
     border-radius: 5px;
-
-    /* no border on the input */
     border: none;
 }
 #close{
@@ -47,7 +46,7 @@
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
+}   */
 
 
 
@@ -65,4 +64,17 @@
     outline: none;
     padding: 20px;
     display: block;
+} */
+
+/* 
+.hidden-modal{
+    background-color: rgb(177, 63, 63);
+    width: 10px;
+    height: 10px;
+    margin: 0 auto;
+    
+   
+    border-radius: 40px;
+    z-index: 1;
+    position: fixed;
 } */
