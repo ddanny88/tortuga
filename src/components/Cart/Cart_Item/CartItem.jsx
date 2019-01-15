@@ -17,7 +17,8 @@ class CartItem extends Component {
                </div>
                <div className="cart-card-content">
                     <p>product name</p>
-                    <p>product $price</p>
+                    <p>product $20.00</p>
+                    <button id="remove-button">remove from cart</button>
                </div>
             </div>
         );

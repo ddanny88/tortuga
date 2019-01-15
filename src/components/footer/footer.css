@@ -8,6 +8,7 @@
     justify-content: space-around;
     margin-top: 10px;
     padding-top: 15px;
+    border-top: solid 10px black;
 }
 .social-content{
     display: flex;
