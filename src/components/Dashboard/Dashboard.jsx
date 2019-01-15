@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import Product from '../Product/Products';
 // import {getProducts} from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import'./dash.css';
 import axios from 'axios';
 import { updateUsername, updatePassword, toggleModal } from '../../ducks/reducer';
+import formLogo from '../../assets/icons/blackout-logo.png';
+
+import MiddleContent from '../MiddleContent/MiddleContent';
+
 
 
 
@@ -20,7 +23,7 @@ class Dashboard extends Component {
 
 
     // componentDidMount(){
-
+    //     this.props.getProducts();
     // }
 
 
@@ -42,7 +45,6 @@ class Dashboard extends Component {
     }
 
     handleModal = () => {
-        console.log('hit')
         this.props.toggleModal(!this.props.openModal)
     }
 
@@ -63,7 +65,6 @@ class Dashboard extends Component {
 
     render() {
         const { username, password } = this.props;
-        // console.log('open_modal nigga:', this.props.openModal)
         return (
             <div>
                 <div className="hero-img">
@@ -73,7 +74,7 @@ class Dashboard extends Component {
                         <div className={this.state.loginContent ? "login-content" : "hide-content"}>
                                     
                             <span onClick={this.handleModal} id="close">&times;</span>
-                            <p>logo here</p>
+                            <img src={formLogo} alt="tortuga" className="form-logo"/>
                             <input 
                                     onChange={this.handleUsername} 
                                     placeholder=" username"
@@ -91,23 +92,22 @@ class Dashboard extends Component {
                     </div> 
                     ) : <div className="hidden-modal"/>
                 }
-                    <h1 className="main-heading">Hello</h1>
+                    <h1 className="main-heading">Main welcome message goes here!</h1>
                     <button className="hero-btn">More Info</button>
                 </div>
-                <div className="middle-content">
-                    <Product />
-                </div>
+              
+                <MiddleContent />
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    const {openModal, username, password} = state;
+    const {openModal, username, password } = state;
     return {
         openModal,
         username, 
-        password
+        password,
 
     }
 }

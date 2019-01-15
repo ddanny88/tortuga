@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import {toggleModal} from '../../ducks/reducer';
 
 
+import logo from '../../assets/icons/blackout-logo.png';
+
+
 
 
 class Navigation extends Component {
@@ -18,13 +21,13 @@ class Navigation extends Component {
         return (
             <nav className="nav-bar-container">
             <div>
-                <div className="main-logo">logo</div>
+                <div><Link to="/"><img src={logo} alt="main-logo"v className="main-logo"/></Link></div>
             </div>
             <div>
                     <ul className="main-nav">
-                        <li><button className="login-button" onClick={this.modal}>login</button></li>
+                        <li><Link to="/"><button className="login-button" onClick={this.modal}>login</button></Link></li>
                         <li><Link to='/register'>signup</Link></li>
-                        <li><i className="fas fa-shopping-cart"></i></li>
+                        <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li>
                     </ul>
             </div> 
         </nav>

@@ -66,3 +66,17 @@ where customer.customerId = invoice.customerId; */
 --     username VARCHAR(50),
 --     password VARCHAR(100)
 -- )
+
+
+-- CREATE TABLE products (
+--     product_Id SERIAL PRIMARY KEY,
+--     product_name TEXT,
+--     price DECIMAL,
+--     category TEXT, 
+--     img_url TEXT
+-- )
+
+
+INSERT INTO products (product_name, price, category, img_url)
+
+VALUES('Captain Morgan', '28.99', 'Jager', 'https://cdn.minibardelivery.com/products/295/product/872710.jpg.jpg');

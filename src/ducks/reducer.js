@@ -33,7 +33,6 @@ const UPDATE_ADDRESS = "UPDATE_ADDRESS";
 const UPDATE_CITY = "UPDATE_CITY";
 const UPDATE_ST = "UPDATE_ST";
 const UPDATE_ZIP = "UPDATE_ZIP";
-
 const HANDLE_MODAL = "HANDLE_MODAL";
 
 
@@ -126,7 +125,7 @@ function reducer (state = initialState, action) {
         case `${GET_PRODUCTS}_FULFILLED`: 
             return {
                 ...state,
-                products: action.payload //.data?
+                products: action.payload.data
             }
         case `${GET_PRODUCTS}_REJECTED`:
             return console.log(`*ERROR: PRODUCTS REJECTED...*`)

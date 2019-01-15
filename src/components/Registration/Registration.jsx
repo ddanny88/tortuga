@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { updateFirstName, updateLastName, updatePassword, updateUsername,  updateEmail } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import './register.css';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 class Registration extends Component {
@@ -37,14 +37,14 @@ class Registration extends Component {
             <div>
                 <div className="register-form">
                     <input 
-                        placeholder="First Name"
+                        placeholder=" first name"
                         className="register-input"
                         onChange={this.handleFirstname}
                         value={firstName}
 
                     />
                     <input 
-                        placeholder='Last Name'
+                        placeholder=' last name'
                         className="register-input"
                         onChange={this.handleLastname}
                         value={lastName}
@@ -62,7 +62,7 @@ class Registration extends Component {
                         value={password}
                     />
                     <input 
-                        placeholder=" email@email.com"
+                        placeholder=" you@email.com"
                         className="register-input"
                         onChange={this.handleEmail}
                         value={email}

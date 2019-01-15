@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import store from './store';
 import routes from './routes';
 import Navigation from './components/Navbar/Navigation';
+import Footer from './components/footer/Footer';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <div className="App">
           <Navigation />
           {routes}
+          <Footer />
         </div>
       </Provider>
     );

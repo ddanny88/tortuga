@@ -4,6 +4,7 @@ const { json } = require("body-parser");
 const session = require("express-session");
 const massive = require("massive");
 const authController = require('./controllers/auth_controller');
+const proController = require('./controllers/prod_controller');
 // const auth = require('./middleware/authMiddleware');
 
 
@@ -30,10 +31,19 @@ app.use(
 
 
 
-// authorization endpoints: 
+// AUTHORIZATION: 
 app.post('/api/auth/login', authController.login);
 app.post('/api/auth/register', authController.register);
 app.get('/api/auth/signout', authController.signOut);
+
+
+// PRODUCTS:
+app.get('/api/products', proController.getProducts);
+
+
+
+//CART: 
+
 
 
 
