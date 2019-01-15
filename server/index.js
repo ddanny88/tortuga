@@ -43,6 +43,8 @@ app.get('/api/products', proController.getProducts);
 
 
 //CART: 
+app.post('/api/addToCart');
+app.get('/api/getCart');
 
 
 

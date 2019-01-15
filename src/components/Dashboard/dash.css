@@ -46,10 +46,11 @@
     width: 300px;
     height: 400px;
     margin: 0 auto;
+    top: 25%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top:30px;
+    /* margin-top:30px; */
     justify-content: center;
     border-radius: 10px;
     z-index: 1;
@@ -96,10 +97,11 @@
 }
 
 .hidden-modal{
-    background-color: rgb(177, 63, 63);
-    width: 10px;
-    height: 10px;
+    background-color: gainsboro;
+    width: 0px;
+    height: 0px;
     margin: 0 auto;
+    top: 25%;
     border-radius: 40px;
     z-index: -1;
     position: fixed;
