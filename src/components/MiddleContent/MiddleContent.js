@@ -14,16 +14,8 @@ class MiddleContent extends Component {
 
 
 
-
-
-
-
-
-
-
-
     render() {
-        let dranks = this.props.products.map( drank => ( console.log(typeof drank) ||
+        let dranks = this.props.products.map( drank => (
             <Product 
                 key={drank.id}
                 img={drank.img_url}
@@ -33,7 +25,8 @@ class MiddleContent extends Component {
                 category={drank.category}
                 drink={drank}
             />
-        ));
+        ));  
+        
 
 
 

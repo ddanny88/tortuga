@@ -17,7 +17,7 @@ const login = (req, res) => {
                 if(!isAuthenticated){
                     res.status(403).json('INCORRECT PASSWORD.');
                 } else {
-                    // put the user on session: 
+                    // put the user on session:
                     req.session.user = {
                         username: user.username
                     }
@@ -26,6 +26,7 @@ const login = (req, res) => {
                 }
             }
         })
+
         .catch(err=>{
             console.log(`***${err}***`)
         });

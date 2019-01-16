@@ -12,16 +12,17 @@ const initialState = {
     city: '',
     st: '',
     zipcode: 0,
+    //modal
     openModal: false, 
-
+    displayLoginContent: false,
     // products
     products: [],
+    //cart
     cart: []
 }
 
 
 // ACTION TYPES: 
-
 const GET_PRODUCTS = "GET_PRODUCTS";
 const GET_CART = "GET_CART";
 const UPDATE_USERNAME = "UPDATE_USERNAME";
@@ -35,6 +36,7 @@ const UPDATE_CITY = "UPDATE_CITY";
 const UPDATE_ST = "UPDATE_ST";
 const UPDATE_ZIP = "UPDATE_ZIP";
 const HANDLE_MODAL = "HANDLE_MODAL";
+const HANDLE_CONTENT = "HANDLE_CONTENT";
 const UPDATE_CART = "UPDATE_CART";
 
 
@@ -130,6 +132,12 @@ export function toggleModal(toggle) {
     }
 }
 
+export function toggleContent(content) {
+    return {
+        type: HANDLE_CONTENT,
+        payload: content
+    }
+}
 
 
 // REDUCER FUNCTION: 
@@ -210,6 +218,11 @@ function reducer (state = initialState, action) {
                 ...state,
                 openModal: action.payload
             }
+            case HANDLE_CONTENT: 
+                return {
+                    ...state,
+                    displayLoginContent: action.payload
+                }
         default:
             return state;
     }

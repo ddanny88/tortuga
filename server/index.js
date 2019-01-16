@@ -43,12 +43,12 @@ app.get('/api/auth/signout', authController.signOut);
 app.get('/api/products', proController.getProducts);
 
 
-
-//CART: 
-
 //before anything can be added to the cart, checkCart middleware is fired to check if the session contains cart, if false req.session.cart is initiated. In order to get the cart, the req.session.cart needs to exist therefor it is checked again. 
 app.post('/api/addtocart', checkCart, cc.addToCart);
 app.get('/api/getcart', checkCart, cc.getCart);
+app.delete('/api/cart/:id', cc.removeItem);
+
+
 
 
 

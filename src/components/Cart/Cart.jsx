@@ -3,6 +3,7 @@ import CartItem from './Cart_Item/CartItem';
 import './cart.css';
 import { getCart } from '../../ducks/reducer';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Cart extends Component {
     
@@ -10,21 +11,31 @@ class Cart extends Component {
         this.props.getCart()
     }
 
-    // componentDidUpdate(prevProps){
-    //     if(!this.prevProps){
-            
-    //     }
-    // }
+
+    deleteItem = (id) => {
+        axios.delete(`/api/cart/${id}`)
+            .then(()=>{
+                this.props.getCart()
+            })
+            .catch(err =>{
+                console.log(`**${err}**`)
+            })
+    }
+
+
+    
     render() {
         console.log(this.props.cart)
         let cartItems = this.props.cart.map( item => {
             console.log(item)
            return (
             <CartItem 
+                id={item.product_id}
                 key={item.product_id}
                 img={item.img_url}
                 name={item.product_name}
                 price={item.price}
+                deleteItem={this.deleteItem}
             />)  
         });
         return (

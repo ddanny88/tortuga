@@ -4,7 +4,6 @@
     font-size: 20px;
 }
 .hero-img{
-    /* darkenig of the hero image */
     background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../../assets/images/wine_hero10.png');
     width: 100vw;
     height: 100vh;
@@ -16,13 +15,10 @@
     justify-content: center;
     align-items: center;
     line-height: 2;
-    /* margin-bottom: 20px; */
 }
 /* wine_hero10 */
 /* white_liqor2 */
 /* main_liquor */
-
-
 
 .main-heading{
     color: white;
@@ -40,7 +36,20 @@
 }
 
 
-.login-form{
+
+
+
+
+
+
+
+
+
+
+
+/* STYLING FOR THE LOGIN COMPONENT:  */
+
+/* .login-form{
     
     background-color: gainsboro;
     width: 300px;
@@ -50,7 +59,6 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* margin-top:30px; */
     justify-content: center;
     border-radius: 10px;
     z-index: 1;
@@ -81,7 +89,6 @@
     height: 25px;
     border-radius: 5px;
 
-    /* no border on the input */
     border: none;
 }
 #close{
@@ -111,7 +118,6 @@
 .login-content{
     opacity: 1;
     align-items: center;
-    /* margin: 0 auto; */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -125,28 +131,9 @@
 
 .hide-content{
     opacity: 0;
-}
+} */
 
-.rule{
-    height: 10px;
-    background: black;
-}
-/* middle page content */
-/* middle content will contain display flex
-the items affected will be in the product css file.  */
 
-.middle-content{
-
-    width: 100vw;
-    height: auto;
-    /* background: black; */
-    /* border: 1px solid red; */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    /* test this */
-    /* margin-bottom: 50px; */
-}
 
 
 

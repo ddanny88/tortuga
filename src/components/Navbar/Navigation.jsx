@@ -1,48 +1,53 @@
 import React, {Component} from 'react';
-import'./nav.css';
 import {Link} from 'react-router-dom';
-// import Modal from 'react-responsive-modal';
 import { connect } from 'react-redux';
-import {toggleModal} from '../../ducks/reducer';
-
-
+import { toggleModal, toggleContent } from '../../ducks/reducer';
+import Modal from '../Modal/Modal';
+import Login from '../Login/Login';
 import logo from '../../assets/icons/blackout-logo.png';
+import'./nav.css';
+
+
 
 
 
 
 class Navigation extends Component {
-    // when login is clicked , openModal will open. 
-    modal = () => {
+   
+    handleModal = () => {
         this.props.toggleModal(!this.props.openModal);
+        this.props.toggleContent(!this.props.displayLoginContent)
     }
+   
 
     render(){
         return (
             <nav className="nav-bar-container">
-            <div>
-                <div><Link to="/"><img src={logo} alt="main-logo" className="main-logo"/></Link></div>
-            </div>
-            <div>
-                    <ul className="main-nav">
-                        <li><Link to="/"><button className="login-button" onClick={this.modal}>login</button></Link></li>
-                        <li><Link to='/register'>signup</Link></li>
-                        <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li>
-                    </ul>
-            </div> 
-        </nav>
+                <div>
+                    <div><Link to="/"><img src={ logo } alt="main-logo" className="main-logo"/></Link></div>
+                </div>
+                <div>
+                        <ul className="main-nav">
+                            <li><Link to="/"><button className="login-button" onClick={ this.handleModal }>login</button></Link></li>
+                            <li><Link to='/register'>signup</Link></li>
+                            <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li>
+                        </ul>
+                </div> 
+                <Modal display={ this.props.openModal } toggleDisplay={ this.handleModal }  ModalContent={ Login }/>
+            </nav>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    const {openModal} = state;
+    const { openModal, displayLoginContent } = state;
     return {
-        openModal
+        openModal, 
+        displayLoginContent
     }
 }
 
-export default connect(mapStateToProps, {toggleModal})(Navigation);
+export default connect(mapStateToProps, { toggleModal, toggleContent })(Navigation);
 
 // modal: when the login button is clicked, modal: true, and the the login component is redered to the center of the screen. 
 

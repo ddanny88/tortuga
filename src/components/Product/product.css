@@ -2,7 +2,7 @@
 
 .product-card{
     line-height: 1.8;
-    border:none;
+    border:gainsboro;
     background: white;
     border-radius: 5px;
     width: 250px;
@@ -13,10 +13,9 @@
     margin: 10px;
     padding: 5px;
 }
-.product-card:hover{
-    -webkit-box-shadow: 8px 12px 24px 1px rgba(0,0,0,0.73); 
-    box-shadow: 8px 12px 24px 1px rgba(0,0,0,0.73);
-}
+/* .product-card:hover{
+    background: rgba(0,0,0,0.7);
+}  */
 .product-img{
     width: 80px;
     height: 130px;
@@ -40,3 +39,4 @@
 .card-btn:hover {
     background: rgb(37, 37, 37);
 }
+
