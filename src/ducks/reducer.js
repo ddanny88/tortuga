@@ -15,14 +15,15 @@ const initialState = {
     openModal: false, 
 
     // products
-    products: []
+    products: [],
+    cart: []
 }
 
 
 // ACTION TYPES: 
 
 const GET_PRODUCTS = "GET_PRODUCTS";
-
+const GET_CART = "GET_CART";
 const UPDATE_USERNAME = "UPDATE_USERNAME";
 const UPDATE_PASSWORD = "UPDATE_PASSWORD";
 const UPDATE_FIRST_NAME = "UPDATE_FIRST_NAME";
@@ -34,6 +35,7 @@ const UPDATE_CITY = "UPDATE_CITY";
 const UPDATE_ST = "UPDATE_ST";
 const UPDATE_ZIP = "UPDATE_ZIP";
 const HANDLE_MODAL = "HANDLE_MODAL";
+const UPDATE_CART = "UPDATE_CART";
 
 
 
@@ -44,8 +46,19 @@ export function getProducts(){
         payload: axios.get('/api/products')
     }
 }
-
-// axios end points: 
+export function getCart() {
+    return {
+        type: GET_CART,
+        payload: axios.get('/api/getcart')
+    }
+}
+export function addToCart(product) {
+    // console.log('wtf from the reducer')
+    return {
+        type: UPDATE_CART,
+    payload: axios.post('/api/addtocart',  product )
+    }
+}
 export function updateUsername(username) {
     return {
         type: UPDATE_USERNAME,
@@ -129,6 +142,18 @@ function reducer (state = initialState, action) {
             }
         case `${GET_PRODUCTS}_REJECTED`:
             return console.log(`*ERROR: PRODUCTS REJECTED...*`)
+        case `${GET_CART}_FULFILLED`:
+            return {
+                ...state,
+                cart: action.payload.data
+            }
+        case `${GET_CART}_REJECTED`:
+            return console.log(`*ERROR: REJECTED...`)
+        case `${UPDATE_CART}_FULFILLED`:
+            return {
+                ...state,
+                cart: action.payload.data
+            }
         case UPDATE_FIRST_NAME: 
             return {
                 ...state,

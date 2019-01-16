@@ -21,7 +21,7 @@ class Navigation extends Component {
         return (
             <nav className="nav-bar-container">
             <div>
-                <div><Link to="/"><img src={logo} alt="main-logo"v className="main-logo"/></Link></div>
+                <div><Link to="/"><img src={logo} alt="main-logo" className="main-logo"/></Link></div>
             </div>
             <div>
                     <ul className="main-nav">

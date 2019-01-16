@@ -6,8 +6,8 @@
     background: gainsboro;
     display: flex;
     justify-content: space-around;
-    margin-top: 10px;
-    padding-top: 15px;
+    margin-top: 15px;
+    padding-top: 20px;
     border-top: solid 10px black;
 }
 .social-content{

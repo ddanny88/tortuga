@@ -8,6 +8,14 @@ const checkUser = (req, res, next) => {
     next();
 }
 
+const checkCart = (req, res, next) => {
+    if(!req.session.cart){
+        req.session.cart = []
+    }
+    next();
+}
+
 module.exports = {
-    checkUser
+    checkUser, 
+    checkCart
 }

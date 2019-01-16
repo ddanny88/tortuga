@@ -5,6 +5,8 @@ const session = require("express-session");
 const massive = require("massive");
 const authController = require('./controllers/auth_controller');
 const proController = require('./controllers/prod_controller');
+const cc = require('./controllers/cart_controller');
+const { checkCart } = require('./middleware/authMiddleware');
 // const auth = require('./middleware/authMiddleware');
 
 
@@ -43,8 +45,16 @@ app.get('/api/products', proController.getProducts);
 
 
 //CART: 
-app.post('/api/addToCart');
-app.get('/api/getCart');
+
+//before anything can be added to the cart, checkCart middleware is fired to check if the session contains cart, if false req.session.cart is initiated. In order to get the cart, the req.session.cart needs to exist therefor it is checked again. 
+app.post('/api/addtocart', checkCart, cc.addToCart);
+app.get('/api/getcart', checkCart, cc.getCart);
+
+
+
+//CHECKOUT:
+// before the user can checkout, the user must be logged in and put on session. 
+
 
 
 

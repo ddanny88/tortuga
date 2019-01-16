@@ -23,7 +23,7 @@ class MiddleContent extends Component {
 
 
     render() {
-        let dranks = this.props.products.map( drank => (
+        let dranks = this.props.products.map( drank => ( console.log(typeof drank) ||
             <Product 
                 key={drank.id}
                 img={drank.img_url}
@@ -31,6 +31,7 @@ class MiddleContent extends Component {
                 productName={drank.product_name}
                 price={drank.price}
                 category={drank.category}
+                drink={drank}
             />
         ));
 
