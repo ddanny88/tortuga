@@ -6,15 +6,20 @@ CREATE TABLE products (
     img_url TEXT
 )
 
+
+
+-- should the following table be split into two and joined? 
 CREATE TABLE customers (
+    -- customer registration info: 
     customer_Id SERIAL PRIMARY KEY,
     is_admin BOOLEAN DEFAULT FALSE, 
     firstName VARCHAR(50),
     lastName VARCHAR(50),
-    phone VARCHAR(24),
     username VARCHAR(50),
-    hash TEXT,
+    password TEXT,
+    -- checkout info
     email VARCHAR(60),
+    phone VARCHAR(24),
     address VARCHAR(50),
     city VARCHAR(20),
     state VARCHAR(2),
@@ -31,6 +36,9 @@ CREATE TABLE orders (
     category TEXT REFERENCES products(category), 
     customer_Id INT NOT NULL REFERENCES customers(customer_Id),
     product_Id INT NOT NULL REFERENCES products(product_Id),
+
+
+
     billingAddress VARCHAR(50),
     billingCity VARCHAR(20),
     billingState VARCHAR(2),
@@ -39,6 +47,14 @@ CREATE TABLE orders (
 )
 
 
+-- in the admin page, the admin can add in more inventory. 
+
+
+
+
+
+
+-- should the billing info referece the shipping info? 
 
 --When you join two or more tables, you can select specific or all columns from the joined tables. You are essentially making one big table. 
 

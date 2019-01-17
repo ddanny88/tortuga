@@ -2,9 +2,8 @@
 const getProducts = (req, res) => {
     const db = req.app.get('db');
     db.get_products()
-    .then(users => {
-        console.log(users)
-        res.status(200).json(users);
+    .then(products => {
+        res.status(200).json(products);
     })
     .catch(err=> {
         console.log(`**${err}**`)

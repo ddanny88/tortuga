@@ -4,10 +4,11 @@ const { json } = require("body-parser");
 const session = require("express-session");
 const massive = require("massive");
 const authController = require('./controllers/auth_controller');
-const proController = require('./controllers/prod_controller');
 const cc = require('./controllers/cart_controller');
 const { checkCart } = require('./middleware/authMiddleware');
-// const auth = require('./middleware/authMiddleware');
+const pay_controller = require('./controllers/payment_controller');
+const proController = require('./controllers/prod_controller');
+
 
 
 const app = express();
@@ -49,12 +50,9 @@ app.get('/api/getcart', checkCart, cc.getCart);
 app.delete('/api/cart/:id', cc.removeItem);
 
 
-
-
-
 //CHECKOUT:
 // before the user can checkout, the user must be logged in and put on session. 
-
+app.post('/api/charge', pay_controller.takePayment);
 
 
 

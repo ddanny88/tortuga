@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Cart_item.css';
-import axios from 'axios';
 
 // import image from '../../../assets/product_imgs/henny.webp';
 

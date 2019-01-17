@@ -18,7 +18,10 @@ const initialState = {
     // products
     products: [],
     //cart
-    cart: []
+    cart: [],
+    tax: 0,
+    total: 0
+
 }
 
 
@@ -39,9 +42,25 @@ const HANDLE_MODAL = "HANDLE_MODAL";
 const HANDLE_CONTENT = "HANDLE_CONTENT";
 const UPDATE_CART = "UPDATE_CART";
 
+const UPDATE_TAX = "UPDATE_TAX";
+const UPDATE_TOTAL = "UPDATE_TOTAL";
+
+
 
 
 // ACTION FUNCTIONS: 
+export function updateTax(tax) {
+    return {
+        type: UPDATE_TAX,
+        payload: tax
+    }
+}
+export function updateTotal (total) {
+    return {
+        type: UPDATE_TOTAL,
+        payload: total
+    }
+}
 export function getProducts(){
     return {
         type: GET_PRODUCTS,
@@ -218,11 +237,21 @@ function reducer (state = initialState, action) {
                 ...state,
                 openModal: action.payload
             }
-            case HANDLE_CONTENT: 
-                return {
-                    ...state,
-                    displayLoginContent: action.payload
-                }
+        case HANDLE_CONTENT: 
+            return {
+                ...state,
+                displayLoginContent: action.payload
+            }
+        case UPDATE_TAX:
+            return {
+                ...state,
+                tax: action.payload
+            }
+        case UPDATE_TOTAL: 
+            return {
+                ...state,
+                total: action.payload
+            }
         default:
             return state;
     }

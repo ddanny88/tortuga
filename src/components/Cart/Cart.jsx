@@ -1,23 +1,47 @@
 import React, { Component } from 'react';
 import CartItem from './Cart_Item/CartItem';
-import './cart.css';
-import { getCart } from '../../ducks/reducer';
+import { Link } from 'react-router-dom';
+import { getCart, updateTax, updateTotal } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import './cart.css';
+
+
 
 class Cart extends Component {
     
     componentDidMount() {
         this.props.getCart()
+        this.calcTotals();
     }
+
+    calcTotals = () => {
+        let tax;
+        let total;
+
+        let base = this.props.cart.reduce((accumulator, element) => {
+            return accumulator + (+element.price);
+        }, 0)
+        tax = base * 0.0825;
+        total = base + tax;
+
+        this.props.updateTax(tax)
+        this.props.updateTotal(total)
+    }
+
+    
+
 
 
     deleteItem = (id) => {
         axios.delete(`/api/cart/${id}`)
-            .then(()=>{
+            .then(()=> {
                 this.props.getCart()
+                .then(()=> {
+                    this.calcTotals();
+                })
             })
-            .catch(err =>{
+            .catch(err => {
                 console.log(`**${err}**`)
             })
     }
@@ -27,7 +51,7 @@ class Cart extends Component {
     render() {
         console.log(this.props.cart)
         let cartItems = this.props.cart.map( item => {
-            console.log(item)
+            // console.log(item)
            return (
             <CartItem 
                 id={item.product_id}
@@ -39,26 +63,31 @@ class Cart extends Component {
             />)  
         });
         return (
-            <div className="cart">
+            <div className="cart-container">
                 This is your cart.
                 { cartItems }
                 
                 <hr className="cart_rule"/>
-
-                <p className="total-text">tax: $</p>
-                <p className="total-text">total: $</p>
+                    {/* total and tax will be held in the reducer.  */}
+                <p className="total-text">tax: ${this.props.cart.length > 0 ? this.props.tax : 0.00}</p>
+                <p className="total-text">total: ${this.props.cart.length > 0 ? this.props.total : 0.00}</p>
                 
-                <button className="checkout-button" >CHECKOUT</button>
+                <Link to="/checkout"><button className="checkout-button" >CHECKOUT</button></Link>
+                {/* <TotalC /> */}
             </div>
         );
     }
 }
 
+
+
 const mapStateToProps = (state) => {
-    const {cart} = state;
+    const {cart, tax, total} = state;
     return {
-        cart
+        cart,
+        tax, 
+        total
     }
 }   
 
-export default connect(mapStateToProps, {getCart})(Cart);
+export default connect(mapStateToProps, { getCart, updateTax, updateTotal })(Cart);
