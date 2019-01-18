@@ -52,7 +52,7 @@ app.delete('/api/cart/:id', cc.removeItem);
 
 //CHECKOUT:
 // before the user can checkout, the user must be logged in and put on session. 
-app.post('/api/charge', pay_controller.takePayment);
+app.post('/api/charge', checkCart, pay_controller.takePayment);
 
 
 

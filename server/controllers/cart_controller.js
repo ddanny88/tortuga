@@ -1,13 +1,17 @@
+//gets the cart full of items.
+const getCart = (req, res) => {
+    res.status(200).json(req.session.cart);
+}
+
+
 // adds item to the cart.
 const addToCart = (req, res) => {
     req.session.cart.push(req.body);
     console.log('current req.session.cart: ', req.session.cart);
     res.status(200).json(req.session.cart);
 }
-//gets the cart full of items.
-const getCart = (req, res) => {
-    res.status(200).json(req.session.cart);
-}
+
+
 // removes item form the cart.
 const removeItem = (req, res) => {
     const { cart } = req.session;
@@ -20,6 +24,9 @@ const removeItem = (req, res) => {
 }
 
 
+// const getProductPrice = (req, res) => {
+//     res.status(200).json(req.session.cart.price)
+// }
 
 
 module.exports = {

@@ -7,22 +7,20 @@ import { connect } from 'react-redux';
 
 const Product = (props) => {
 
-    
-
     return (
         <div className='product-card'>
             <div>
                 <img 
-                    src={image} 
-                    alt={props.alt}
+                    src={ image } 
+                    alt={ props.alt }
                     className="product-img"
                 />
             </div>
-            <p className="product-name">{props.productName}</p>
-            <p className="product-price"> ${props.price}</p>
+            <p className="product-name">{ props.productName }</p>
+            <p className="product-price"> ${ props.price }</p>
             
             <button 
-                onClick={()=> props.addToCart(props.drink)}
+                onClick={() => props.addToCart(props.drink)}
                 className="card-btn">
                 <i className="fas fa-cart-plus"></i>
             </button>

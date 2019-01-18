@@ -11,7 +11,7 @@ import './cart.css';
 class Cart extends Component {
     
     componentDidMount() {
-        this.props.getCart()
+        this.props.getCart();
         this.calcTotals();
     }
 
@@ -22,11 +22,13 @@ class Cart extends Component {
         let base = this.props.cart.reduce((accumulator, element) => {
             return accumulator + (+element.price);
         }, 0)
-        tax = base * 0.0825;
-        total = base + tax;
+        tax = (base * 0.0825);
+        total = (base + tax);
 
-        this.props.updateTax(tax)
-        this.props.updateTotal(total)
+
+        // two decimal places: 
+        this.props.updateTax(tax.toFixed(2));
+        this.props.updateTotal(total.toFixed(2));
     }
 
     
@@ -35,9 +37,9 @@ class Cart extends Component {
 
     deleteItem = (id) => {
         axios.delete(`/api/cart/${id}`)
-            .then(()=> {
+            .then(() => {
                 this.props.getCart()
-                .then(()=> {
+                .then(() => {
                     this.calcTotals();
                 })
             })
@@ -49,26 +51,27 @@ class Cart extends Component {
 
     
     render() {
-        console.log(this.props.cart)
+        // console.log(typeof this.props.cart)
         let cartItems = this.props.cart.map( item => {
             // console.log(item)
            return (
             <CartItem 
-                id={item.product_id}
-                key={item.product_id}
-                img={item.img_url}
-                name={item.product_name}
-                price={item.price}
-                deleteItem={this.deleteItem}
+                id={ item.product_id }
+                key={ item.product_id }
+                img={ item.img_url }
+                name={ item.product_name }
+                price={ item.price }
+                deleteItem={ this.deleteItem }
             />)  
         });
+
+        
         return (
             <div className="cart-container">
                 This is your cart.
                 { cartItems }
                 
                 <hr className="cart_rule"/>
-                    {/* total and tax will be held in the reducer.  */}
                 <p className="total-text">tax: ${this.props.cart.length > 0 ? this.props.tax : 0.00}</p>
                 <p className="total-text">total: ${this.props.cart.length > 0 ? this.props.total : 0.00}</p>
                 

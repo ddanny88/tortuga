@@ -41,7 +41,6 @@ const UPDATE_ZIP = "UPDATE_ZIP";
 const HANDLE_MODAL = "HANDLE_MODAL";
 const HANDLE_CONTENT = "HANDLE_CONTENT";
 const UPDATE_CART = "UPDATE_CART";
-
 const UPDATE_TAX = "UPDATE_TAX";
 const UPDATE_TOTAL = "UPDATE_TOTAL";
 
@@ -49,6 +48,8 @@ const UPDATE_TOTAL = "UPDATE_TOTAL";
 
 
 // ACTION FUNCTIONS: 
+
+
 export function updateTax(tax) {
     return {
         type: UPDATE_TAX,
@@ -74,7 +75,6 @@ export function getCart() {
     }
 }
 export function addToCart(product) {
-    // console.log('wtf from the reducer')
     return {
         type: UPDATE_CART,
     payload: axios.post('/api/addtocart',  product )
