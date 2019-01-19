@@ -6,14 +6,14 @@ const login = (req, res) => {
     const db = req.app.get('db');
     db.get_user(req.body.username)
         .then(response => {
-            console.log(response);
+            // console.log(response); //returns an array.
             let user = response[0];
-            console.log(user);
+            // console.log(user);
             if(!user){
                 res.status(401).json('USER NOT FOUND.');
             } else {
                 let isAuthenticated = bcrypt.compareSync(req.body.password, user.password) 
-                console.log(isAuthenticated);
+                // console.log(isAuthenticated);
                 if(!isAuthenticated){
                     res.status(403).json('INCORRECT PASSWORD.');
                 } else {
@@ -21,17 +21,18 @@ const login = (req, res) => {
                     req.session.user = {
                         username: user.username
                     }
-                    console.log(req.session.user)
+                    // console.log(req.session.user)
                     res.status(200).json(req.session.user);
                 }
             }
         })
-
-        .catch(err=>{
+        .catch( err => {
             console.log(`***${err}***`)
         });
 };
 
+
+// comppare the reggistration info to that of the form, and that of the table. 
 // USER REGISTRATION: 
 const register = (req, res) => {
     const { firstName, lastName, email, username, password } = req.body;
@@ -43,28 +44,33 @@ const register = (req, res) => {
             const hash = bcrypt.hashSync(password, salt);
             db.register_user(firstName, lastName, email, username,  hash)
                 .then(response => {
+                    // console.log(response)
                     let user = response[0];
-                    console.log(user);
+                    // console.log(user);
                     req.session.user = {
                         username: user.username
                     }
-                    console.log(req.session.user);
+                    // console.log(req.session.user);
                     res.status(200).json(req.session.user)
                 })
         } else {
             res.status(401).json('USER ALREADY EXISTS.')
         }
     })
-    .catch(err=> {
+    .catch( err => {
         console.log(`***${err}***`)
     })
 }
+
+
 
 // USER SIGNOUT: 
 const signOut = (req, res) => {
     req.session.destroy();
     res.status(200).json('SESSION TERMINATED...')
 }
+
+
 
 module.exports = {
     login,

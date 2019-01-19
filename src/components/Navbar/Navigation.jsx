@@ -34,7 +34,7 @@ class Navigation extends Component {
                             <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li>
                         </ul>
                 </div> 
-                <Modal display={ this.props.openModal } toggleDisplay={ this.handleModal }  ModalContent={ Login }/>
+                <Modal display={ this.props.openModal } toggleDisplay={ this.handleModal }  ModalContent={ Login } />
             </nav>
         )
     }

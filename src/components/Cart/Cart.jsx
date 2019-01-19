@@ -15,6 +15,11 @@ class Cart extends Component {
         this.calcTotals();
     }
 
+    checkout = () => {
+        console.log(this.props.cart);
+       
+    }
+
     calcTotals = () => {
         let tax;
         let total;
@@ -52,7 +57,6 @@ class Cart extends Component {
     
     render() {
         console.log(this.props)
-        // console.log(typeof this.props.cart)
         let cartItems = this.props.cart.map( item => {
             // console.log(item)
            return (
@@ -82,7 +86,6 @@ class Cart extends Component {
                 <p className="total-text">total: ${this.props.cart.length > 0 ? this.props.total : 0.00}</p>
                 
                 <Link to="/checkout"><button className="checkout-button" >CHECKOUT</button></Link>
-                {/* <TotalC /> */}
             </div>
         );
     }

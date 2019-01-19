@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
  
-export default class Payment extends Component {
+class Payment extends Component {
 
   onToken = (token) => {
-      console.log(token)
+      console.log('this is the token', token)
       axios.post('/api/charge', { token })
         .then( response => {
-            console.log(response)
+            console.log('this is the response', response)
         })
         .catch( err => {
             console.log(`**${err}**`)
@@ -19,33 +19,21 @@ export default class Payment extends Component {
     return (
         <div className="payment-btn">
             <StripeCheckout
-                amount={1000000}
                 name="Tortuga"
-                billingAddress
-                zipCode={true}
                 description="Alcohol Delivery"
+                panelLabel="complete purchase"
+                // amount={} //cents
                 currency='USD'
-                allowRememberMe={false}
+                billingAddress={true}
+                zipCode={true}
+                allowRememberMe={true}
                 token={this.onToken}
                 stripeKey="pk_test_I1su1HpYzoQpKkC2Dt3xFHnB"
             />
-
-            
         </div>
-
     )
   }
 }
 
+export default Payment;
 
-
-// onToken = (token) => {
-//     fetch('/save-stripe-token', {
-//       method: 'POST',
-//       body: JSON.stringify(token),
-//     }).then(response => {
-//       response.json().then(data => {
-//         alert(`We are in business, ${data.email}`);
-//       });
-//     });
-//   }
