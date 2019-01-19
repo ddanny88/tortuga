@@ -1,8 +1,9 @@
 import React from 'react';
 import './product.css';
-import image from '../../assets/product_imgs/patron.webp';
 import { addToCart } from '../../ducks/reducer';
 import { connect } from 'react-redux';
+
+
 
 
 const Product = (props) => {
@@ -11,7 +12,7 @@ const Product = (props) => {
         <div className='product-card'>
             <div>
                 <img 
-                    src={ image } 
+                    src={ props.img } 
                     alt={ props.alt }
                     className="product-img"
                 />

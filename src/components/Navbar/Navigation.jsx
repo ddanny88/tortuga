@@ -4,12 +4,9 @@ import { connect } from 'react-redux';
 import { toggleModal, toggleContent } from '../../ducks/reducer';
 import Modal from '../Modal/Modal';
 import Login from '../Login/Login';
-// import logo from '../../assets/icons/blackout-logo.png';
 import'./nav.css';
 
 
-
-// const logo = "s3://tortuga-assets/blackout-logo.png";
 
 
 class Navigation extends Component {
@@ -24,7 +21,11 @@ class Navigation extends Component {
         return (
             <nav className="nav-bar-container">
                 <div>
-                    <div><Link to="/"><img src="s3://tortuga-assets/blackout-logo.png" alt="main-logo" className="main-logo"/></Link></div>
+                    <div><Link to="/">
+                    <img src="https://s3.us-east-2.amazonaws.com/tortuga-assets/blue-logo.png" 
+                        alt="main-logo" 
+                        className="main-logo"
+                    /></Link></div>
                 </div>
                 <div>
                         <ul className="main-nav">

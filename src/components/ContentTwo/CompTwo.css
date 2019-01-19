@@ -1,0 +1,19 @@
+.contentTwo-container{
+    display: flex;
+    width: 100vw;
+    background: gainsboro;
+    margin-bottom: 30px;
+}
+
+.text-containerTwo{
+    width: 50vw;
+    text-align: center;
+    margin-top: 40px;
+    font-family: 'Arimo', sans-serif
+}
+
+.content-img2{
+    width: 50vw;
+    background: gainsboro;
+    
+}

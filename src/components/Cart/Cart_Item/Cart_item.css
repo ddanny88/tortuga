@@ -22,9 +22,10 @@
     text-align: center;
 }
 .cart-product-img{
-    width: 110px;
+    width: 100px;
     height: 147px;
     margin: 5px;
+    padding-left: 20px;
 }
 
 .cart-card-content{
@@ -32,7 +33,7 @@
     margin-right: 60px;
 }
 #remove-button{
-    background: black;
+    background: rgb(235, 15, 15);
     color: white;
     font-size: 15px;
     border: none;
@@ -42,5 +43,5 @@
 }
 
 #remove-button:hover{
-    background: rgb(36, 36, 36);
+    background: rgb(173, 24, 24);
 }

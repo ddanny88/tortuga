@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import MiddleContent from '../MiddleContent/MiddleContent';
+import ContentOne from '../ContentOne/ContentOne';
+import ContentTwo from '../ContentTwo/ContentTwo';
 import'./dash.css';
 
 
@@ -10,16 +12,6 @@ import'./dash.css';
 
 class Dashboard extends Component {
 
-    // componentDidUpdate(prevProps, prevState){
-    //     if(this.props.openModal){
-    //         setTimeout(()=> {
-    //             this.setState({
-    //                 loginContent: true
-    //             })
-    //         }, 1000)
-    //     }
-    // }
-
     render() {
         return (
             <div>
@@ -29,7 +21,21 @@ class Dashboard extends Component {
                     <button className="hero-btn">More Info</button>
                 </div>
               
-                <MiddleContent />
+
+               <div className="middle-mission-content">
+                    <h2 className="mission">BRINGING THE PARTY TO YOU SINCE 2019</h2>
+                    <hr className="mission-rule"/>
+                    <p className="statement">At Tortuga, This is a mission statement that will make you buy alcohol which means more money for me.</p>
+               </div>
+
+                    <ContentOne />
+                    <ContentTwo />
+
+                <div className="featured">
+                    <h2 className="featured-text">FEATURED</h2>
+                    <hr className="featured-rule"/>
+                </div>
+                    <MiddleContent />
             </div>
         );
     }
@@ -40,27 +46,3 @@ export default Dashboard;
 
 
 
-{/* {
-                    this.props.openModal? (
-                    <div className="login-form">
-                        <div className={this.state.loginContent ? "login-content" : "hide-content"}>
-                                    
-                            <span onClick={this.handleModal} id="close">&times;</span>
-                            <img src={formLogo} alt="tortuga" className="form-logo"/>
-                            <input 
-                                    onChange={this.handleUsername} 
-                                    placeholder=" username"
-                                    className="login-input" 
-                                    value={username}
-                            />
-                            <input 
-                                    onChange={this.handlePassword} 
-                                    placeholder=" password"
-                                    className="login-input" 
-                                    value={password}
-                            />
-                            <button  onClick={this.login} className="form-button">login</button> 
-                        </div>
-                    </div> 
-                    ) : <div className="hidden-modal"/>
-                } */}

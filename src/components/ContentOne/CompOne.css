@@ -1,0 +1,23 @@
+.contentOne-container{
+    display: flex;
+    width: 100vw;
+    background: gainsboro;
+}
+
+.text-containerOne{
+    width: 50vw;
+    text-align: center;
+    margin-top: 40px;
+  
+}
+
+.content-img1{
+    width: 50vw;
+    background: gainsboro;
+}
+.quote1{
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Arimo', sans-serif;
+    font-style: italic;
+}

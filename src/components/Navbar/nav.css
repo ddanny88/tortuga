@@ -30,8 +30,8 @@ align-items: center; */
     height: 40px;
     border-radius: 5px;
     border: none;
-    background: red;
-    color: white;
+    background: rgb(108, 233, 233);
+    color: black;
     padding: 5px;
     cursor: pointer;
 }
@@ -46,7 +46,7 @@ align-items: center; */
 
 .main-logo{
     margin-left: 100%;
-    width: 80px;
+    width: 85px;
     height: 80px;
 }
 .main-nav{

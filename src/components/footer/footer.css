@@ -3,11 +3,12 @@
 .footer-container{
     width: 100vw;
     height: 30vh;
-    background: gainsboro;
+    background: black;
     display: flex;
     justify-content: space-around;
     padding-top: 20px;
-    border-top: solid 10px black;
+    color: white;
+    
 }
 .social-content{
     display: flex;
@@ -17,6 +18,13 @@
 .fa-facebook,
 .fa-twitter-square,
 .fa-google-plus-square {
-    font-size: 40px;
+    font-size: 25px;
     margin: 5px;
+    color: white;
+}
+
+.bottom-rule{
+    width: 60vw;
+    height: .5px;
+    color: gainsboro;
 }

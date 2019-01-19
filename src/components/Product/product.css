@@ -25,13 +25,14 @@
 }
 .product-name{
     font-weight: bold;
+    font-size: 18px;
 }
 .card-btn{
     background: black;
     margin-top: 50px;
     font-size: 20px;
     color: white;
-    width: 80%;
+    width: 60%;
     height: 35px;
     border: none;
     border-radius: 10px;

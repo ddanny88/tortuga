@@ -94,5 +94,4 @@ where customer.customerId = invoice.customerId; */
 
 
 INSERT INTO products (product_name, price, category, img_url)
-
-VALUES('Captain Morgan', '28.99', 'Jager', 'https://cdn.minibardelivery.com/products/295/product/872710.jpg.jpg');
+VALUES('Crown Royal', '44.99','Whiskey', 'https://s3.us-east-2.amazonaws.com/tortuga-assets/crown.jpg');

@@ -1,5 +1,6 @@
 //gets the cart full of items.
 const getCart = (req, res) => {
+    
     res.status(200).json(req.session.cart);
 }
 

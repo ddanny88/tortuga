@@ -51,6 +51,7 @@ class Cart extends Component {
 
     
     render() {
+        console.log(this.props)
         // console.log(typeof this.props.cart)
         let cartItems = this.props.cart.map( item => {
             // console.log(item)
@@ -64,6 +65,11 @@ class Cart extends Component {
                 deleteItem={ this.deleteItem }
             />)  
         });
+
+        // let preTax = this.props.cart.reduce((accumulator, element) => {
+        //     return accumulator + (+element.price)
+        // },0);
+        // console.log(preTax);
 
         
         return (
