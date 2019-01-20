@@ -1,16 +1,40 @@
-//gets the cart full of items.
-const getCart = (req, res) => {
-    res.status(200).json(req.session.cart);
+// Calculates total excluding tax:
+const calcBase = (cart) => {
+    if(!cart){
+        return;
+    }
+    let base = cart.reduce((accumulator, element) => {
+        return accumulator + (+element.price);
+    }, 0)
+    return base;
+}
+//Calculates tax based on total: 
+const calcTax = (cart) => {
+    let tax = calcBase(cart) * 0.0825;
+    return tax;
+}
+//calculates the total cart: 
+const calcTotal = (cart) => {
+    let total = calcTax(cart) + calcBase(cart);
+   return total;
 }
 
+//gets the cart full of items.
+const getCart = (req, res) => {
+    // console.log(req.session.cart)
+    res.status(200).json(req.session.cart);
+}
 
 // adds item to the cart.
 const addToCart = (req, res) => {
-    req.session.cart.push(req.body);
-    console.log('current req.session.cart: ', req.session.cart);
-    res.status(200).json(req.session.cart);
-}
+    let cartArray = [...req.session.cart, req.body]
+    let tax  = calcTax(cartArray).toFixed(2);
+    let total  = calcTotal(cartArray).toFixed(2);
+    req.session.cart.push({...req.body, tax, total});
 
+    console.log('current req.session.cart: ', req.session.cart);
+    res.status(200).json( req.session.cart);
+}
 
 // removes item form the cart.
 const removeItem = (req, res) => {
@@ -23,10 +47,6 @@ const removeItem = (req, res) => {
     res.status(200).json(req.session.cart)
 }
 
-
-// const getProductPrice = (req, res) => {
-//     res.status(200).json(req.session.cart.price)
-// }
 
 
 module.exports = {

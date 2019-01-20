@@ -1,3 +1,4 @@
+--takes in the products name, price, category (wine, liquor, beer), and image url.
 CREATE TABLE products (
     product_Id SERIAL PRIMARY KEY,
     product_name TEXT,
@@ -6,19 +7,20 @@ CREATE TABLE products (
     img_url TEXT
 )
 
-
-
--- should the following table be split into two and joined? 
-CREATE TABLE customers (
-    -- customer registration info: 
+-- customer registration info: 
+CREATE TABLE customers(
     customer_Id SERIAL PRIMARY KEY,
     is_admin BOOLEAN DEFAULT FALSE, 
     firstName VARCHAR(50),
     lastName VARCHAR(50),
-    username VARCHAR(50),
-    password TEXT,
-    -- checkout info
     email VARCHAR(60),
+    username VARCHAR(50),
+    password VARCHAR(150)
+)
+
+-- checkout info
+CREATE TABLE checkout (
+    checkout_Id SERIAL PRIMARY KEY, 
     phone VARCHAR(24),
     address VARCHAR(50),
     city VARCHAR(20),
@@ -29,8 +31,8 @@ CREATE TABLE customers (
 CREATE TABLE orders (
     order_Id SERIAL PRIMARY KEY,
     order_date DATETIME,
-    product_name TEXT,
-    price DECIMAL,
+    product_name TEXT REFERENCES products(product_name),
+    price DECIMAL REFERENCES products(price),
     firstName VARCHAR(50) REFERENCES customers(firstName),
     lastName VARCHAR(50) REFERENCES customers(lastName),
     category TEXT REFERENCES products(category), 
@@ -48,18 +50,9 @@ CREATE TABLE orders (
 
 
 -- in the admin page, the admin can add in more inventory. 
-
-
-
-
-
-
 -- should the billing info referece the shipping info? 
 
 --When you join two or more tables, you can select specific or all columns from the joined tables. You are essentially making one big table. 
-
-
-
 
 -- the following two queries are the exact same: 
 
@@ -70,8 +63,6 @@ CREATE TABLE orders (
 /* select * 
 from customer, invoice
 where customer.customerId = invoice.customerId; */
-
-
 
 -- testing purposes only: 
 -- CREATE TABLE uses (

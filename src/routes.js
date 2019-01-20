@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Registration from './components/Registration/Registration';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
+import Admin from './components/Admin/Admin';
 
 
 export default (
@@ -12,5 +13,6 @@ export default (
         <Route path="/register" component={ Registration } />
         <Route path="/cart" component={ Cart } />
         <Route path="/checkout" component={ Checkout } />
+        <Route path="/login/admin" component={ Admin } />
     </Switch>
 );
