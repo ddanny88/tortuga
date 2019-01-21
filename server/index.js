@@ -54,7 +54,8 @@ app.delete('/api/cart/:id', cc.removeItem);
 // before the user can checkout, the user must be logged in and put on session. 
 app.post('/api/charge', checkCart, pay_controller.takePayment);
 
-
+//ADD PRODUCT: 
+app.post('/api/addproduct', proController.addNewProduct);
 
 //CHART DATA:
 app.get('/api/getchartdata')

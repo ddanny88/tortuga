@@ -10,7 +10,22 @@ const getProducts = (req, res) => {
     })
 }
 
+const addNewProduct = (req, res) => {
+    const db = req.app.get('db');
+    const { productName, price, category, img_url } = req.body
+    db.add_new_product(productName, price, category, img_url)
+        .then( () => {
+            res.sendStatus(200)
+        })
+        .catch( err => {
+            console.log(`**${err}**`)
+        })
+}
+
+
+
 module.exports = {
     getProducts, 
+    addNewProduct
     
 }

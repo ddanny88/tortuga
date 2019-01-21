@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import { bindActionCreators } from 'redux';
 
 const initialState = {
     //customer login/registration
@@ -66,12 +67,30 @@ const HANDLE_MODAL = "HANDLE_MODAL";
 const HANDLE_CONTENT = "HANDLE_CONTENT";
 const UPDATE_CART = "UPDATE_CART";
 const UPDATE_CHART = "UPDATE_CHART";
+const ADD_PRODUCT_NAME = "ADD_PRODUCT_NAME";
+const ADD_PRODUCT_PRICE = "ADD_PRODUCT_PRICE";
+const ADD_PRODUCT_CATEGORY = "ADD_PRODUCT_CATEGORY";
+const ADD_IMG_URL = "ADD_IMG_URL";
 
-
-
+const CLEAR_NEW_PRODUCT = "CLEAR_NEW_PRODUCT";
 
 
 // ACTION FUNCTIONS: 
+
+export function clearInput(){
+    return {
+        type: CLEAR_NEW_PRODUCT,
+        payload: {
+            productName: '',
+            price: 0,
+            category: '',
+            img_url: '',
+        }
+    }
+}
+
+
+
 export function updateChart() {
     return {
         type: UPDATE_CHART,
@@ -174,8 +193,30 @@ export function toggleContent(content) {
     }
 }
 
-
-
+export function addProductName(productName){
+    return {
+        type: ADD_PRODUCT_NAME,
+        payload: productName
+    }
+}
+export function addProductPrice(price){
+    return {
+        type: ADD_PRODUCT_PRICE,
+        payload: price
+    }
+}
+export function addProductCategory(category){
+    return {
+        type: ADD_PRODUCT_CATEGORY,
+        payload: category
+    }
+}
+export function addProductImgUrl(url){
+    return {
+        type: ADD_IMG_URL,
+        payload: url
+    }
+}
 
 
 // REDUCER FUNCTION: 
@@ -267,6 +308,31 @@ function reducer (state = initialState, action) {
             return {
                 ...state,
                 chart: action.payload
+            }
+        case ADD_PRODUCT_NAME: 
+            return {
+                ...state,
+                productName: action.payload
+            }
+        case ADD_PRODUCT_PRICE: 
+            return {
+                ...state,
+                price: action.payload
+            }
+        case ADD_PRODUCT_CATEGORY:
+            return {
+                ...state,
+                category: action.payload
+            }
+        case ADD_IMG_URL:
+            return {
+                ...state,
+                img_url: action.payload
+            }
+        case CLEAR_NEW_PRODUCT: 
+            return  {
+                ...state,
+                
             }
         default:
             return state;

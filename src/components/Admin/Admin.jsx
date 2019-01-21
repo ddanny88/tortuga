@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ChartComponent from '../Chart/ChartComponent';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { addProductName, addProductPrice, addProductCategory, addProductImgUrl } from '../../ducks/reducer';
 import'./admin.css';
 
 
@@ -10,7 +12,6 @@ class Admin extends Component {
     constructor(){
         super();
         this.state = {
-            productName: '',
             displayAddItem: false
         }
     }
@@ -20,26 +21,45 @@ class Admin extends Component {
             displayAddItem: !this.state.displayAddItem
         });
     }
-
-    handleCancel = () => {
-        this.displayControl()
+    addNewProduct = () => {
+        const { productName, price, category, img_url } = this.props;
+        // console.log(productName, price, category, img_url);
+        axios.post('/api/addproduct', { productName, price, category, img_url} );
     }
+    handleCancel = () => {
+        this.displayControl();
+    }
+
+
+
 
     handleProductName = (e) => {
-        this.setState({
-            productName: e.target.value
-        });
+       this.props.addProductName(e.target.value);
     }
 
-    addNewProduct = () => {
-        axios.post('/api/addproduct');
+    handlePrice = (e) => {
+        this.props.addProductPrice(e.target.value);
     }
+
+    handleCategory = (e) => {
+        this.props.addProductCategory(e.target.value);
+    }
+
+    handleImgUrl = (e) => {
+        this.props.addProductImgUrl(e.target.value);
+    }
+
+
+    
+
     render() {
+        const { productName, price, category, img_url } =  this.props;
         return (
             <div className="admin-container">
                 This is the Admin page:
 
                 <ChartComponent />
+
                 <div>
                     <hr className="admin-rule"/>
                    
@@ -50,14 +70,36 @@ class Admin extends Component {
                 </div>
                 {this.state.displayAddItem ? (
                     <div className="item-form">
-                        <input placeholder=" product name" onChange={this.handleProductName} value={this.state.productName} />
-                        <input placeholder=" price" />
-                        <input placeholder=" category" />
-                        <input placeholder=" image_url" />
+
+                    <img 
+                        src={this.props.img_url ? img_url :"https://s3.us-east-2.amazonaws.com/tortuga-assets/placeholderBottle.svg"} alt="product"
+                        className="placeholder_img"
+                    />
+
+                        <input 
+                            placeholder=" product name" 
+                            onChange={this.handleProductName} 
+                            value={ productName } 
+                        />
+                        <input 
+                            placeholder=" price" 
+                            onChange={this.handlePrice}
+                            value={ price } 
+                        />
+                        <input 
+                            placeholder=" category" 
+                            onChange={this.handleCategory}
+                            value={ category }
+                        />
+                        <input 
+                            placeholder=" image_url"
+                            onChange={this.handleImgUrl} 
+                            value={ img_url }
+                        />
                         
                       <div>
                         <button className="form-btn" onClick={this.handleCancel}>cancel</button>
-                        <button className="form-btn">submit</button>
+                        <button className="form-btn" onClick={this.addNewProduct}>submit</button>
                       </div>
                     </div>
                 ) : null}
@@ -66,4 +108,15 @@ class Admin extends Component {
     }
 }
 
-export default Admin;
+function mapStateToProps(state){
+    const  { productName, price, category, img_url } = state;
+    return {
+        productName, 
+        price,
+        category,
+        img_url
+    }
+}
+
+export default connect(mapStateToProps,{ addProductName, addProductPrice, addProductCategory, addProductImgUrl })(Admin);
+
