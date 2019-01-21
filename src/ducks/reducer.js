@@ -1,24 +1,51 @@
 import axios from 'axios';
 
 const initialState = {
-    // customer login/registration
-    username:'',
-    password:'',
-    firstName:'', 
-    lastName:'',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    st: '',
-    zipcode: 0,
+    //customer login/registration
+        username:'',
+        password:'',
+        firstName:'', 
+        lastName:'',
+        email: '',
+        phone: '',
+        address: '',
+        city: '',
+        st: '',
+        zipcode: 0,
+    //new product
+        productName: '',
+        price: 0,
+        category: '',
+        img_url: '',
     //modal
-    openModal: false, 
-    displayLoginContent: false,
+        openModal: false, 
+        displayLoginContent: false,
     // products
-    products: [],
+        products: [],
     //cart
-    cart: [],
+        cart: [],
+
+    //chart Component: 
+        chartData: {
+            labels: ['Dallas', 'El Paso', 'Austin', 'Houston'],
+            datasets: [
+                {
+                    label: 'Size',
+                    data: [
+                        100,
+                        200,
+                        300,
+                        400
+                    ],
+                    backgroundColor:[
+                        "rgba(255,99,123,0.6)",
+                        "rgba(54,162,235,0.6)",
+                        "rgba(255,159,64,0.6)",
+                        "rgba(75,192,192,0.6)"
+                    ]
+                }
+            ]
+        }
 }
 
 
@@ -38,13 +65,20 @@ const UPDATE_ZIP = "UPDATE_ZIP";
 const HANDLE_MODAL = "HANDLE_MODAL";
 const HANDLE_CONTENT = "HANDLE_CONTENT";
 const UPDATE_CART = "UPDATE_CART";
+const UPDATE_CHART = "UPDATE_CHART";
 
 
 
 
 
 // ACTION FUNCTIONS: 
-export function getProducts(){
+export function updateChart() {
+    return {
+        type: UPDATE_CHART,
+        payload: axios.get('/api/getchartdata')
+    }
+}
+export function getProducts() {
     return {
         type: GET_PRODUCTS,
         payload: axios.get('/api/products')
@@ -141,6 +175,9 @@ export function toggleContent(content) {
 }
 
 
+
+
+
 // REDUCER FUNCTION: 
 function reducer (state = initialState, action) {
     switch (action.type) {
@@ -151,14 +188,16 @@ function reducer (state = initialState, action) {
             }
         case `${GET_PRODUCTS}_REJECTED`:
             return console.log(`*ERROR: PRODUCTS REJECTED...*`)
+
         case `${GET_CART}_FULFILLED`:
-        console.log('PAYLOAD' ,action.payload)
+            console.log('PAYLOAD' ,action.payload)
             return {
                 ...state,
                 cart: action.payload.data
             }
         case `${GET_CART}_REJECTED`:
             return console.log(`*ERROR: REJECTED...`)
+
         case `${UPDATE_CART}_FULFILLED`:
             return {
                 ...state,
@@ -209,7 +248,6 @@ function reducer (state = initialState, action) {
                 ...state,
                 zipcode: action.payload
             }
-        
         case UPDATE_PHONE: 
             return {
                 ...state,
@@ -225,7 +263,11 @@ function reducer (state = initialState, action) {
                 ...state,
                 displayLoginContent: action.payload
             }
-            
+        case UPDATE_CHART: 
+            return {
+                ...state,
+                chart: action.payload
+            }
         default:
             return state;
     }

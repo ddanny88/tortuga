@@ -56,7 +56,8 @@ app.post('/api/charge', checkCart, pay_controller.takePayment);
 
 
 
-
+//CHART DATA:
+app.get('/api/getchartdata')
 
 
 

@@ -49,6 +49,14 @@ CREATE TABLE orders (
 )
 
 
+
+-- CREATE TABLE category_sales (
+
+-- )
+
+
+
+
 -- in the admin page, the admin can add in more inventory. 
 -- should the billing info referece the shipping info? 
 
