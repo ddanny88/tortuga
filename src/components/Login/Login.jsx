@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUsername, updatePassword} from '../../ducks/reducer';
+import { updateUsername, updatePassword, updateCurrentUsername} from '../../ducks/reducer';
 import axios from 'axios';
 import './login.css';
 
@@ -24,12 +24,16 @@ class Login extends Component {
         this.props.updatePassword(e.target.value)
     }
 
-    
+
+    updateCurrentUser = (username) => {
+        this.props.updateCurrentUsername(username)
+    }
     login = () => {
        const { username, password } = this.props;
         axios.post('/api/auth/login', { username, password })
-            .then(user => {
+            .then( user => {
                 console.log(user)
+                this.updateCurrentUser(user.data.username)
             }) 
             .catch(err => {
                 alert('Unauthorized User.', err)
@@ -69,12 +73,13 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { username, password, displayLoginContent } = state;
+    const { username, password, displayLoginContent, currentUsername } = state;
     return {
         username, 
         password,
-        displayLoginContent
+        displayLoginContent,
+        currentUsername
     }
 }
 
-export default connect(mapStateToProps, {updateUsername, updatePassword})(Login);
+export default connect(mapStateToProps, {updateUsername, updatePassword, updateCurrentUsername})(Login);

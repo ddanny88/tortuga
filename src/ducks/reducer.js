@@ -13,6 +13,8 @@ const initialState = {
         city: '',
         st: '',
         zipcode: 0,
+    //nav username
+        currentUsername: null,
     //new product
         productName: '',
         price: 0,
@@ -71,11 +73,20 @@ const ADD_PRODUCT_NAME = "ADD_PRODUCT_NAME";
 const ADD_PRODUCT_PRICE = "ADD_PRODUCT_PRICE";
 const ADD_PRODUCT_CATEGORY = "ADD_PRODUCT_CATEGORY";
 const ADD_IMG_URL = "ADD_IMG_URL";
+const UPDATE_CURRENT_USERNAME = "UPDATE_CURRENT_USERNAME";
 
 const CLEAR_NEW_PRODUCT = "CLEAR_NEW_PRODUCT";
 
 
 // ACTION FUNCTIONS: 
+
+export function updateCurrentUsername(currentUsername){
+    return {
+        type: UPDATE_CURRENT_USERNAME,
+        payload: currentUsername
+    }
+}
+
 
 export function clearInput(){
     return {
@@ -88,8 +99,6 @@ export function clearInput(){
         }
     }
 }
-
-
 
 export function updateChart() {
     return {
@@ -329,10 +338,10 @@ function reducer (state = initialState, action) {
                 ...state,
                 img_url: action.payload
             }
-        case CLEAR_NEW_PRODUCT: 
-            return  {
+        case UPDATE_CURRENT_USERNAME: 
+            return {
                 ...state,
-                
+                currentUsername: action.payload
             }
         default:
             return state;

@@ -38,6 +38,7 @@ app.use(
 app.post('/api/auth/login', authController.login);
 app.post('/api/auth/register', authController.register);
 app.get('/api/auth/signout', authController.signOut);
+// app.get('/api/getusername', authController.getUsername);
 
 
 // PRODUCTS:
@@ -59,6 +60,9 @@ app.post('/api/addproduct', proController.addNewProduct);
 
 //CHART DATA:
 app.get('/api/getchartdata')
+
+//ADMIN ACCESS: 
+// app.get('/api/login/admin', authController)
 
 
 

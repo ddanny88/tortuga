@@ -5,17 +5,42 @@ import { toggleModal, toggleContent } from '../../ducks/reducer';
 import Modal from '../Modal/Modal';
 import Login from '../Login/Login';
 import'./nav.css';
+import axios from 'axios';
 
 
 
 
 class Navigation extends Component {
+
+
+    // constructor(){
+    //     super();
+    //     this.state = {
+    //         currentUser: null
+    //     }
+    // }
+
+
+
+    // componentDidUpdate
    
     handleModal = () => {
         this.props.toggleModal(!this.props.openModal);
         this.props.toggleContent(!this.props.displayLoginContent)
     }
    
+    // getUsername = () => {
+    //     axios.get('/api/getusername')
+    //         .then( username => {
+    //             this.setState({
+    //                 currentUser: username
+    //             })
+    //         })
+    //         .catch( err => {
+    //             console.log(err)
+    //         })
+    // }
+
 
     render(){
         return (
@@ -29,7 +54,8 @@ class Navigation extends Component {
                 </div>
                 <div>
                         <ul className="main-nav">
-                            <li><Link to="/"><button className="login-button" onClick={ this.handleModal }>login</button></Link></li>
+                            {this.props.currentUsername ? <li className="current_user">{this.props.currentUsername}</li>: <li><Link to="/"><button className="login-button" onClick={ this.handleModal }>login</button></Link></li>}
+                            {this.props.currentUsername ? <li><button className="sign_out_button">sign out</button></li>: null}
                             <li><Link to='/register'>signup</Link></li>
                             <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li>
                         </ul>
@@ -41,10 +67,11 @@ class Navigation extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { openModal, displayLoginContent } = state;
+    const { openModal, displayLoginContent, currentUsername } = state;
     return {
         openModal, 
-        displayLoginContent
+        displayLoginContent, 
+        currentUsername
     }
 }
 

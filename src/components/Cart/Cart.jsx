@@ -55,7 +55,7 @@ class Cart extends Component {
                 { cartItems }
                 
                 <hr className="cart_rule"/>
-                <p className="total-text">tax: ${this.props.cart.length > 0 ? item.tax: 0.00}</p>
+                <p className="total-text">tax: ${this.props.cart.length > 0 ? item.tax : 0.00}</p>
                 <p className="total-text">total: ${this.props.cart.length > 0 ? item.total : 0.00}</p>
                 
                 <Link to="/checkout"><button className="checkout-button" >CHECKOUT</button></Link>

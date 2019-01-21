@@ -31,7 +31,6 @@ const login = (req, res) => {
         });
 };
 
-
 // comppare the reggistration info to that of the form, and that of the table. 
 // USER REGISTRATION: 
 const register = (req, res) => {
@@ -71,9 +70,8 @@ const signOut = (req, res) => {
 }
 
 
-
 module.exports = {
     login,
     register,
-    signOut
+    signOut,
 }

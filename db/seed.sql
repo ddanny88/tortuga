@@ -54,7 +54,7 @@ CREATE TABLE orders (
 
 -- )
 
-
++
 
 
 -- in the admin page, the admin can add in more inventory. 

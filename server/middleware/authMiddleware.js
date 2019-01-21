@@ -13,9 +13,17 @@ const checkCart = (req, res, next) => {
     next();
 }
 
+const isAdmin = (req, res, next) => {
+    if(!req.session.user.isAdmin){
+        res.status(401).json("UNAUTHORIZED USER")
+    }
+    next();
+}
+
 module.exports = {
     checkUser, 
-    checkCart
+    checkCart,
+    isAdmin
 }
 
 
