@@ -1,46 +1,27 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleModal, toggleContent } from '../../ducks/reducer';
+import { toggleModal, toggleContent, updateCurrentUsername } from '../../ducks/reducer';
 import Modal from '../Modal/Modal';
 import Login from '../Login/Login';
-import'./nav.css';
 import axios from 'axios';
+import'./nav.css';
 
 
 
-
-class Navigation extends Component {
-
-
-    // constructor(){
-    //     super();
-    //     this.state = {
-    //         currentUser: null
-    //     }
-    // }
-
-
-
-    // componentDidUpdate
+class Navigation extends Component {   
    
     handleModal = () => {
         this.props.toggleModal(!this.props.openModal);
         this.props.toggleContent(!this.props.displayLoginContent)
     }
    
-    // getUsername = () => {
-    //     axios.get('/api/getusername')
-    //         .then( username => {
-    //             this.setState({
-    //                 currentUser: username
-    //             })
-    //         })
-    //         .catch( err => {
-    //             console.log(err)
-    //         })
-    // }
-
+    signOut = () => {
+        axios.get('/api/auth/signout')
+        .then(() => {
+            this.props.updateCurrentUsername(null)
+        })
+    }
 
     render(){
         return (
@@ -54,8 +35,8 @@ class Navigation extends Component {
                 </div>
                 <div>
                         <ul className="main-nav">
-                            {this.props.currentUsername ? <li className="current_user">{this.props.currentUsername}</li>: <li><Link to="/"><button className="login-button" onClick={ this.handleModal }>login</button></Link></li>}
-                            {this.props.currentUsername ? <li><button className="sign_out_button">sign out</button></li>: null}
+                            {this.props.currentUsername ? <li className="current_user"> @{this.props.currentUsername}</li>: <li><Link to="/"><button className="login-button" onClick={ this.handleModal }>login</button></Link></li>}
+                            {this.props.currentUsername ? <li><button className="sign_out_button" onClick={this.signOut}>sign out</button></li>: null}
                             <li><Link to='/register'>signup</Link></li>
                             <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li>
                         </ul>
@@ -75,7 +56,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { toggleModal, toggleContent })(Navigation);
+export default connect(mapStateToProps, { toggleModal, toggleContent, updateCurrentUsername })(Navigation);
 
 // modal: when the login button is clicked, modal: true, and the the login component is redered to the center of the screen. 
 

@@ -38,7 +38,7 @@ app.use(
 app.post('/api/auth/login', authController.login);
 app.post('/api/auth/register', authController.register);
 app.get('/api/auth/signout', authController.signOut);
-// app.get('/api/getusername', authController.getUsername);
+app.get('/api/getusername', authController.getUsername);
 
 
 // PRODUCTS:

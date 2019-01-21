@@ -25,6 +25,15 @@ class Login extends Component {
     }
 
 
+    componentDidMount(){
+        if(!this.props.currentUsername){
+            axios.get('/api/getusername')
+            .then( user => {
+                this.props.updateCurrentUsername(user.data.username)
+            });  
+        }
+    }
+
     updateCurrentUser = (username) => {
         this.props.updateCurrentUsername(username)
     }

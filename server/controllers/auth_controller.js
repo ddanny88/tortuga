@@ -61,7 +61,9 @@ const register = (req, res) => {
     })
 }
 
-
+const getUsername = (req, res) => {
+    res.status(200).json(req.session.user)
+}
 
 // USER SIGNOUT: 
 const signOut = (req, res) => {
@@ -74,4 +76,5 @@ module.exports = {
     login,
     register,
     signOut,
+    getUsername
 }
