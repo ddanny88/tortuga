@@ -7,8 +7,6 @@ import Login from '../Login/Login';
 import axios from 'axios';
 import'./nav.css';
 
-
-
 class Navigation extends Component {   
    
     handleModal = () => {
@@ -34,9 +32,8 @@ class Navigation extends Component {
                 </div>
                 <div>
                         <ul className="main-nav">
-                            {this.props.currentUsername ? <li className="current_user"> @{this.props.currentUsername}</li>: <li><Link to="/"><button className="login-button" onClick={ this.handleModal }>login</button></Link></li>}
+                            {this.props.currentUsername ? <li className="current_user"> @{this.props.currentUsername}</li> : <li><Link to="/"><button className="login-button" onClick={ this.handleModal }>login</button></Link></li>}
                             {this.props.currentUsername ? <li><button className="sign_out_button" onClick={this.signOut}>sign out</button></li>: null}
-                            <li><Link to='/register'>signup</Link></li>
                             <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li>
                         </ul>
                 </div> 
@@ -56,7 +53,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay })(Navigation);
-
-// modal: when the login button is clicked, modal: true, and the the login component is redered to the center of the screen. 
-
-// you need an exit button, and perhaps a mini nav in the login page

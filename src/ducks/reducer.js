@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { bindActionCreators } from 'redux';
 
 const initialState = {
     //customer login/registration
@@ -24,6 +23,7 @@ const initialState = {
         openModal: false, 
         displayLoginContent: false,
         displayForm: false,
+        register: false,
     // products
         products: [],
     //cart
@@ -67,6 +67,7 @@ const UPDATE_CITY = "UPDATE_CITY";
 const UPDATE_ST = "UPDATE_ST";
 const UPDATE_ZIP = "UPDATE_ZIP";
 const HANDLE_MODAL = "HANDLE_MODAL";
+const UPDATE_REGISTER = "UPDATE_REGISTER";
 const HANDLE_CONTENT = "HANDLE_CONTENT";
 const UPDATE_FORM_DISPLAY = "UPDATE_FORM_DISPLAY";
 const UPDATE_CART = "UPDATE_CART";
@@ -203,6 +204,13 @@ export function toggleModal(toggle) {
     }
 }
 
+export function toggleRegister(toggle) {
+    return {
+        type: UPDATE_REGISTER,
+        payload: toggle
+    }
+}
+
 export function toggleContent(content) {
     return {
         type: HANDLE_CONTENT,
@@ -320,7 +328,13 @@ function reducer (state = initialState, action) {
             return {
                 ...state,
                 openModal: action.payload,
-                displayForm: false
+                displayForm: false,
+                register: false
+            }
+        case UPDATE_REGISTER:
+            return {
+                ...state,
+                register: action.payload
             }
         case HANDLE_CONTENT: 
             return {

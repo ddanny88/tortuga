@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { updateFirstName, updateLastName, updatePassword, updateUsername,  updateEmail } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import './register.css';
-// import axios from 'axios';
+import axios from 'axios';
 
 
 class Registration extends Component {
@@ -26,13 +26,13 @@ class Registration extends Component {
         this.props.updateEmail(e.target.value);
     }
 
-    // register = () => {
-    //     const { firstName, lastName, username, password, email } = this.props
-    //     axios.post('/api/auth/register', {firstName, lastName, username, password, email})
-    // }
+    register = () => {
+        const { firstName, lastName, username, password, email } = this.props
+        axios.post('/api/auth/register', {firstName, lastName, username, password, email})
+    }
 
     render() {
-        const {firstName, lastName, username, password, email} = this.props;
+        const { firstName, lastName, username, password, email } = this.props;
         return (
             <div>
                 <div className="register-form">
@@ -67,7 +67,7 @@ class Registration extends Component {
                         onChange={this.handleEmail}
                         value={email}
                     />
-                    <button className="register-btn">register</button>
+                    <button className="register-btn" onClick={this.register}>register</button>
                 </div>
             </div>
         );

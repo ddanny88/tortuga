@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUsername, updatePassword, updateCurrentUsername, toggleFormDisplay, toggleModal } from '../../ducks/reducer';
+import { updateUsername, updatePassword, updateCurrentUsername, toggleFormDisplay, toggleModal, toggleRegister } from '../../ducks/reducer';
+import Registration from "../Registration/Registration";
 import axios from 'axios';
 import './login.css';
-
- import logo from '../../assets/icons/blackout-logo.png';
 
 
 
 class Login extends Component {
 
+    handleRegister = () => this.props.toggleRegister(true);
 
     handleUsername = (e) => {
         this.props.updateUsername(e.target.value)
     }
+
     handlePassword = (e) => { 
         this.props.updatePassword(e.target.value)
     }
@@ -48,21 +49,28 @@ class Login extends Component {
     }
 
 
-    // when login btn is clicked, the input needs to render when the modal is open, and close prior to the modal closing. 
     render() {
         const { username, password } = this.props;
-        
+
         setTimeout(() => {
             if (!this.props.displayForm && this.props.openModal) {
                 this.props.toggleFormDisplay(true);
             }
         }, 700);
+
+
+        console.log(this.props.toggleRegister)
+
+        if (this.props.register) {
+            return <Registration />;
+        }
+
         return (
             <div className={ this.props.openModal ? "login-form" : "login-form-closed" }>
                 {
                     this.props.displayForm && (
                         <>
-                            <img src={ logo } alt="tortuga"/>
+                            
                             <form onSubmit={this.login} className={ this.props.openModal ? "form-container" : "form-container-closed" }>
                                     <input 
                                             type="text"
@@ -77,8 +85,9 @@ class Login extends Component {
 
                                             value={password}
                                     />
-                                    <button className="form-button">login</button> 
+                                    <button className="form-button">Login</button> 
                             </form>
+                            <button className="register-btn"onClick={ this.handleRegister }>Sign up</button>
                         </>
                     )
                 }
@@ -88,14 +97,15 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { username, password, openModal, currentUsername, displayForm } = state;
+    const { username, password, openModal, currentUsername, displayForm, register } = state;
     return {
         username, 
         password,
         openModal,
         currentUsername,
-        displayForm
+        displayForm,
+        register
     }
 }
 
-export default connect(mapStateToProps, {updateUsername, updatePassword, updateCurrentUsername, toggleFormDisplay, toggleModal })(Login);
+export default connect(mapStateToProps, {updateUsername, updatePassword, updateCurrentUsername, toggleFormDisplay, toggleModal, toggleRegister })(Login);

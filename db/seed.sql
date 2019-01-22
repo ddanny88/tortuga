@@ -7,8 +7,9 @@ CREATE TABLE products (
     img_url TEXT
 )
 
+
 -- customer registration info: 
-CREATE TABLE customers(
+CREATE TABLE users(
     customer_Id SERIAL PRIMARY KEY,
     is_admin BOOLEAN DEFAULT FALSE, 
     firstName VARCHAR(50),
@@ -53,8 +54,6 @@ CREATE TABLE orders (
 -- CREATE TABLE category_sales (
 
 -- )
-
-+
 
 
 -- in the admin page, the admin can add in more inventory. 
