@@ -1,16 +1,16 @@
 
-const getChart = (req, res) => {
-    const db = req.app.get('db');
+// const getChart = (req, res) => {
+//     const db = req.app.get('db');
 
-    db.get_data()
-        .then()
+//     db.get_data()
+//         .then()
 
-        let charData = {
+//         let charData = {
 
-        }
-.   json(charData)
+//         }
+// .   json(charData)
 
-}
+// }
 
 
 

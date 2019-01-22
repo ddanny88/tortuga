@@ -32,7 +32,8 @@ class Cart extends Component {
 
 
     render() {
-        console.log(this.props.cart)
+        console.log("this is the current cart :", this.props.cart)
+        console.log("this is current props: ", this.props)
         let cartItems = this.props.cart.map( item => {
             // console.log(item)
            return (

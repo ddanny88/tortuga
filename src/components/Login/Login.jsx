@@ -14,32 +14,29 @@ class Login extends Component {
     handleUsername = (e) => {
         this.props.updateUsername(e.target.value)
     }
-
     handlePassword = (e) => { 
         this.props.updatePassword(e.target.value)
     }
-
-
     componentDidMount(){
         if(!this.props.currentUsername){
             axios.get('/api/getusername')
-            .then( user => {
-                this.props.updateCurrentUsername(user.data.username)
-            });  
+                .then( user => {
+                    this.props.updateCurrentUsername(user.data.username)
+                })
+                .catch( err => {
+                    console.log(err)
+                }) 
         }
     }
-
     updateCurrentUser = (username) => {
         this.props.updateCurrentUsername(username)
     }
-
-
     login = (e) => {
        const { username, password } = this.props;
-       e.preventDefault()
+       e.preventDefault();
         axios.post('/api/auth/login', { username, password })
             .then( user => {
-                console.log(user)
+                // console.log(user)
                 this.updateCurrentUser(user.data.username)
                 this.props.toggleModal(false);
             }) 
@@ -59,7 +56,6 @@ class Login extends Component {
         }, 700);
 
 
-        console.log(this.props.toggleRegister)
 
         if (this.props.register) {
             return <Registration />;

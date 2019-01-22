@@ -1,14 +1,13 @@
 // state, city, address, zip can all be requrired when the user is checking out, also checking if the users billing and shipping address are the same.  
 
 import React, { Component } from 'react';
-import { updateFirstName, updateLastName, updatePassword, updateUsername,  updateEmail } from '../../ducks/reducer';
+import { updateFirstName, updateLastName, updatePassword, updateUsername,  updateEmail, toggleModal, updateCurrentUsername } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import './register.css';
 import axios from 'axios';
 
 
 class Registration extends Component {
-
 
     handleFirstname = (e) => {
         this.props.updateFirstName(e.target.value);
@@ -26,16 +25,28 @@ class Registration extends Component {
         this.props.updateEmail(e.target.value);
     }
 
-    register = () => {
-        const { firstName, lastName, username, password, email } = this.props
+    register = (e) => {
+        const { firstName, lastName, username, password, email } = this.props;
+       e.preventDefault();
         axios.post('/api/auth/register', {firstName, lastName, username, password, email})
+        .then(() => {
+            axios.get('/api/getusername')
+            .then( user => {
+                this.props.updateCurrentUsername(user.data.username)
+                console.log(user)
+            })
+            .catch( err => {
+                console.log(err)
+            }) 
+            this.props.toggleModal(false);
+        })
     }
 
     render() {
         const { firstName, lastName, username, password, email } = this.props;
         return (
             <div>
-                <div className="register-form">
+                <form  onSubmit={this.register} className="register-form">
                     <input 
                         placeholder=" first name"
                         className="register-input"
@@ -56,6 +67,7 @@ class Registration extends Component {
                         value={username}
                     />
                     <input 
+                        type="password"
                         placeholder=" password"
                         className="register-input"
                         onChange={this.handlePassword}
@@ -67,8 +79,8 @@ class Registration extends Component {
                         onChange={this.handleEmail}
                         value={email}
                     />
-                    <button className="register-btn" onClick={this.register}>register</button>
-                </div>
+                    <button className="register-btn">register</button>
+                </form>
             </div>
         );
     }
@@ -86,4 +98,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { updateFirstName, updateLastName, updatePassword, updateUsername,  updateEmail })(Registration);
+export default connect(mapStateToProps, { updateFirstName, updateLastName, updatePassword, updateUsername,  updateEmail, toggleModal, updateCurrentUsername })(Registration);

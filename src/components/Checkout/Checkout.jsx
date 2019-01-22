@@ -8,13 +8,25 @@ class Checkout extends Component {
         return (
             <div>
                 <div className="checkout-container">
-                    <input />
-                    <input />
-                    <input />
-                    <input />
-                    <input />
-                <hr/>
+                   
+                       <label>Address</label>
+                        <input />
+
+                        <label>City</label>
+                        <input />
+
+                        <label>State</label>
+                        <input />
+
+                        <label>Zipcode</label>
+                        <input />
+
+                        <label>Phone</label>
+                        <input type="phone" />
+
+                        <button className="checkout-btn">submit</button>
                     <Payment />
+                <hr/>
                 </div>
             </div>
         );

@@ -1,3 +1,3 @@
 SELECT * 
-FROM users --change to customers once tables are connected.  
+FROM users 
 WHERE username = $1;

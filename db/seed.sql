@@ -10,14 +10,16 @@ CREATE TABLE products (
 
 -- customer registration info: 
 CREATE TABLE users(
-    customer_Id SERIAL PRIMARY KEY,
+    user_Id SERIAL PRIMARY KEY,
     is_admin BOOLEAN DEFAULT FALSE, 
     firstName VARCHAR(50),
     lastName VARCHAR(50),
     email VARCHAR(60),
     username VARCHAR(50),
-    password VARCHAR(150)
+    password VARCHAR(150),
+    verification VARCHAR(150) --id
 )
+
 
 -- checkout info
 CREATE TABLE checkout (
@@ -26,35 +28,48 @@ CREATE TABLE checkout (
     address VARCHAR(50),
     city VARCHAR(20),
     state VARCHAR(2),
-    zipcode VARCHAR(10)
+    zipcode VARCHAR(10),
+    order_date DATE DEFAULT CURRENT_DATE
 )
+
 
 CREATE TABLE orders (
     order_Id SERIAL PRIMARY KEY,
-    order_date DATETIME,
-    product_name TEXT REFERENCES products(product_name),
-    price DECIMAL REFERENCES products(price),
-    firstName VARCHAR(50) REFERENCES customers(firstName),
-    lastName VARCHAR(50) REFERENCES customers(lastName),
+    customer_Id INT NOT NULL REFERENCES users(user_Id),
+    product_Id INT NOT NULL REFERENCES products(product_Id)
+);
+
+
+
+CREATE TABLE orders (
+    order_Id SERIAL PRIMARY KEY,
+    firstName VARCHAR(50) REFERENCES users(firstName),
+    lastName VARCHAR(50) REFERENCES users(lastName),
+    customer_Id INT NOT NULL REFERENCES users(customer_Id),
     category TEXT REFERENCES products(category), 
-    customer_Id INT NOT NULL REFERENCES customers(customer_Id),
     product_Id INT NOT NULL REFERENCES products(product_Id),
+    price DECIMAL REFERENCES products(price),
+    product_name TEXT REFERENCES products(product_name),
+    order_date DATE REFERENCES checkout(order_date)
+);
 
 
+    -- billingAddress VARCHAR(50),
+    -- billingCity VARCHAR(20),
+    -- billingState VARCHAR(2),
+    -- billingZip VARCHAR(10),
+ 
 
-    billingAddress VARCHAR(50),
-    billingCity VARCHAR(20),
-    billingState VARCHAR(2),
-    billingZip VARCHAR(10),
-    total DECIMAL
+SELECT SUM(price) from orders;
+
+CREATE TABLE category_sales (
+    sales_id SERIAL PRIMARY KEY, 
+    salsesTotal DECIMAL,
+    category TEXT REFERENCES 
 )
 
 
-
--- CREATE TABLE category_sales (
-
--- )
-
+update users set is_admin = true where user_id = 1;
 
 -- in the admin page, the admin can add in more inventory. 
 -- should the billing info referece the shipping info? 

@@ -101,6 +101,8 @@ class Admin extends Component {
                       </div>
                     </div>
                 ) : null}
+                <hr/>
+                ORDER LOOKUP: access certain order through form that querys the orders database
             </div>
         );
     }

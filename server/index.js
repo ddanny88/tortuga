@@ -43,24 +43,17 @@ app.get('/api/getusername', authController.getUsername);
 
 // PRODUCTS:
 app.get('/api/products', proController.getProducts);
-
-
 //before anything can be added to the cart, checkCart middleware is fired to check if the session contains cart, if false req.session.cart is initiated. In order to get the cart, the req.session.cart needs to exist therefor it is checked again. 
 app.post('/api/addtocart', checkCart, cc.addToCart);
 app.get('/api/getcart', checkCart, cc.getCart);
 app.delete('/api/cart/:id', cc.removeItem);
-
-
 //CHECKOUT:
 // before the user can checkout, the user must be logged in and put on session. 
 app.post('/api/charge', checkCart, pay_controller.takePayment);
-
 //ADD PRODUCT: 
 app.post('/api/addproduct', proController.addNewProduct);
-
 //CHART DATA:
 app.get('/api/getchartdata')
-
 //ADMIN ACCESS: 
 // app.get('/api/login/admin', authController)
 

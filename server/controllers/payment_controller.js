@@ -15,7 +15,7 @@ const total = 55.00 //ex
 
 const takePayment = (req, res) => {
     const token = req.body.token;
-    console.log('The token on the back-end', token)
+    // console.log('The token on the back-end', token)
 
     const charge = stripe.charges.create({
         amount: `${total}`,
@@ -32,3 +32,30 @@ module.exports = {
     takePayment
 }
 
+
+
+// const configureStripe = require('stripe');
+// const stripe = configureStripe(process.env.STRIPE_SECRET);
+
+// const postStripeCharge = res => (stripeErr, stripeRes) => {
+  
+//   if (stripeErr) {
+//     res.status(500).send({ Error: stripeRes });
+//   } else {
+//     res.status(200).send({ success: stripeRes });
+//   }
+// }
+
+// const paymentApi = app => {
+//   app.post('/createcharge', (req, res) => {
+//     stripe.charges.create(req.body, postStripeCharge(res))
+//   });
+
+//   return app;
+// };
+
+// const configureRoutes = app => {
+//   paymentApi(app);
+// };
+
+// module.exports = configureRoutes;
