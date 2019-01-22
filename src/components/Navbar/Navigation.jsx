@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleModal, toggleContent, updateCurrentUsername } from '../../ducks/reducer';
+import { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay } from '../../ducks/reducer';
 import Modal from '../Modal/Modal';
 import Login from '../Login/Login';
 import axios from 'axios';
@@ -13,7 +13,6 @@ class Navigation extends Component {
    
     handleModal = () => {
         this.props.toggleModal(!this.props.openModal);
-        this.props.toggleContent(!this.props.displayLoginContent)
     }
    
     signOut = () => {
@@ -56,7 +55,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { toggleModal, toggleContent, updateCurrentUsername })(Navigation);
+export default connect(mapStateToProps, { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay })(Navigation);
 
 // modal: when the login button is clicked, modal: true, and the the login component is redered to the center of the screen. 
 

@@ -12,7 +12,7 @@ import './modal-form.css';
 const Modal = props => (
     <div className={ props.display ? "modal" : "modal-closed" }>
         <div className={props.display ? "modal-container" : "modal-container-closed"}>
-            <span className="modal-close-button" onClick={props.toggleDisplay} />
+            <span className="modal-close-button" onClick={props.toggleDisplay}> &#10005;</span>
             { <props.ModalContent/> }
         </div>
     </div>

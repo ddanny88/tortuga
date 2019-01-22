@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUsername, updatePassword, updateCurrentUsername} from '../../ducks/reducer';
+import { updateUsername, updatePassword, updateCurrentUsername, toggleFormDisplay, toggleModal } from '../../ducks/reducer';
 import axios from 'axios';
 import './login.css';
 
@@ -9,13 +9,7 @@ import './login.css';
 
 
 class Login extends Component {
-   
 
-    handleDisplay = () => {
-        this.setState({
-            displayLoginContent: !this.state.displayLoginContent
-        })
-    }
 
     handleUsername = (e) => {
         this.props.updateUsername(e.target.value)
@@ -37,12 +31,16 @@ class Login extends Component {
     updateCurrentUser = (username) => {
         this.props.updateCurrentUsername(username)
     }
-    login = () => {
+
+
+    login = (e) => {
        const { username, password } = this.props;
+       e.preventDefault()
         axios.post('/api/auth/login', { username, password })
             .then( user => {
                 console.log(user)
                 this.updateCurrentUser(user.data.username)
+                this.props.toggleModal(false);
             }) 
             .catch(err => {
                 alert('Unauthorized User.', err)
@@ -53,42 +51,51 @@ class Login extends Component {
     // when login btn is clicked, the input needs to render when the modal is open, and close prior to the modal closing. 
     render() {
         const { username, password } = this.props;
-        // if (!this.props.displayLoginContent) {
-        //     return null;
-        // }
-
+        
+        setTimeout(() => {
+            if (!this.props.displayForm && this.props.openModal) {
+                this.props.toggleFormDisplay(true);
+            }
+        }, 700);
         return (
-            <div className={ this.props.displayLoginContent ? "login-form" : "login-form-closed" }>
-                <img src={ logo } alt="tortuga"/>
-                   <div className={ this.props.displayLoginContent ? "form-container" : "form-container-closed" }>
-                        <input 
-                                type="text"
-                                onChange={this.handleUsername} 
-                                placeholder=" username"
-                                value={username}
-                        />
-                        <input 
-                                type="text"
-                                onChange={this.handlePassword} 
-                                placeholder=" password"
+            <div className={ this.props.openModal ? "login-form" : "login-form-closed" }>
+                {
+                    this.props.displayForm && (
+                        <>
+                            <img src={ logo } alt="tortuga"/>
+                            <form onSubmit={this.login} className={ this.props.openModal ? "form-container" : "form-container-closed" }>
+                                    <input 
+                                            type="text"
+                                            onChange={this.handleUsername} 
+                                            placeholder=" username"
+                                            value={username}
+                                    />
+                                    <input 
+                                            type="password"
+                                            onChange={this.handlePassword} 
+                                            placeholder=" password"
 
-                                value={password}
-                        />
-                        <button  onClick={this.login} >login</button> 
-                   </div>
+                                            value={password}
+                                    />
+                                    <button className="form-button">login</button> 
+                            </form>
+                        </>
+                    )
+                }
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    const { username, password, displayLoginContent, currentUsername } = state;
+    const { username, password, openModal, currentUsername, displayForm } = state;
     return {
         username, 
         password,
-        displayLoginContent,
-        currentUsername
+        openModal,
+        currentUsername,
+        displayForm
     }
 }
 
-export default connect(mapStateToProps, {updateUsername, updatePassword, updateCurrentUsername})(Login);
+export default connect(mapStateToProps, {updateUsername, updatePassword, updateCurrentUsername, toggleFormDisplay, toggleModal })(Login);

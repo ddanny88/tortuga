@@ -23,6 +23,7 @@ const initialState = {
     //modal
         openModal: false, 
         displayLoginContent: false,
+        displayForm: false,
     // products
         products: [],
     //cart
@@ -67,6 +68,7 @@ const UPDATE_ST = "UPDATE_ST";
 const UPDATE_ZIP = "UPDATE_ZIP";
 const HANDLE_MODAL = "HANDLE_MODAL";
 const HANDLE_CONTENT = "HANDLE_CONTENT";
+const UPDATE_FORM_DISPLAY = "UPDATE_FORM_DISPLAY";
 const UPDATE_CART = "UPDATE_CART";
 const UPDATE_CHART = "UPDATE_CHART";
 const ADD_PRODUCT_NAME = "ADD_PRODUCT_NAME";
@@ -188,6 +190,12 @@ export function updatePhone(phone){
 
 
 // handles the modal: 
+export function toggleFormDisplay(toggle) {
+    return {
+        type: UPDATE_FORM_DISPLAY,
+        payload: toggle
+    }
+}
 export function toggleModal(toggle) {
     return {
         type: HANDLE_MODAL,
@@ -303,10 +311,16 @@ function reducer (state = initialState, action) {
                 ...state,
                 phone: action.payload
             }
+        case UPDATE_FORM_DISPLAY:
+            return {
+                ...state,
+                displayForm: action.payload
+            }
         case HANDLE_MODAL: 
             return {
                 ...state,
-                openModal: action.payload
+                openModal: action.payload,
+                displayForm: false
             }
         case HANDLE_CONTENT: 
             return {

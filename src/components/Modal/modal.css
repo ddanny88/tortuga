@@ -72,17 +72,3 @@
     opacity: 1;
     cursor: pointer;
   }
-  .modal-close-button:before, .modal-close-button:after {
-    position: absolute;
-    left: 15px;
-    content: ' ';
-    height: 20px;
-    width: 2px;
-    background-color: #333;
-  }
-  .modal-close-button:before {
-    transform: rotate(45deg);
-  }
-  .modal-close-button:after {
-    transform: rotate(-45deg);
-  }
