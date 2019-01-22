@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ChartComponent from '../Chart/ChartComponent';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { addProductName, addProductPrice, addProductCategory, addProductImgUrl } from '../../ducks/reducer';
+import { addProductName, addProductPrice, addProductCategory, addProductImgUrl, clearInput } from '../../ducks/reducer';
 import'./admin.css';
 
 
@@ -25,13 +25,11 @@ class Admin extends Component {
         const { productName, price, category, img_url } = this.props;
         // console.log(productName, price, category, img_url);
         axios.post('/api/addproduct', { productName, price, category, img_url} );
+        this.props.clearInput();
     }
     handleCancel = () => {
         this.displayControl();
     }
-
-
-
 
     handleProductName = (e) => {
        this.props.addProductName(e.target.value);
@@ -118,5 +116,5 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps,{ addProductName, addProductPrice, addProductCategory, addProductImgUrl })(Admin);
+export default connect(mapStateToProps,{ addProductName, addProductPrice, addProductCategory, addProductImgUrl, clearInput })(Admin);
 

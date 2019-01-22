@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Doughnut  } from 'react-chartjs-2';
+import { Bar  } from 'react-chartjs-2';
 
 // import {} from '../../ducks/reducer';
 
@@ -17,7 +17,7 @@ class ChartComponent extends Component {
     render(){
         return (
             <div>
-                <Doughnut
+                <Bar
                     data={ this.props.chartData }
                     width={400}
                     height={400}

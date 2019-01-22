@@ -36,7 +36,7 @@ const initialState = {
                 {
                     label: 'Size',
                     data: [
-                        100,
+                        500,
                         200,
                         300,
                         400
@@ -77,12 +77,10 @@ const ADD_PRODUCT_PRICE = "ADD_PRODUCT_PRICE";
 const ADD_PRODUCT_CATEGORY = "ADD_PRODUCT_CATEGORY";
 const ADD_IMG_URL = "ADD_IMG_URL";
 const UPDATE_CURRENT_USERNAME = "UPDATE_CURRENT_USERNAME";
-
 const CLEAR_NEW_PRODUCT = "CLEAR_NEW_PRODUCT";
 
 
 // ACTION FUNCTIONS: 
-
 export function updateCurrentUsername(currentUsername){
     return {
         type: UPDATE_CURRENT_USERNAME,
@@ -124,7 +122,7 @@ export function getCart() {
 export function addToCart(product) {
     return {
         type: UPDATE_CART,
-    payload: axios.post('/api/addtocart',  product )
+        payload: axios.post('/api/addtocart',  product )
     }
 }
 export function updateUsername(username) {
@@ -175,7 +173,6 @@ export function updateZip(zip){
         payload: zip
     }
 }
-
 export function updateEmail(email){
     return {
         type: UPDATE_EMAIL,
@@ -188,8 +185,6 @@ export function updatePhone(phone){
         payload: phone
     }
 }
-
-
 // handles the modal: 
 export function toggleFormDisplay(toggle) {
     return {
@@ -370,6 +365,14 @@ function reducer (state = initialState, action) {
             return {
                 ...state,
                 currentUsername: action.payload
+            }
+        case CLEAR_NEW_PRODUCT: 
+            return {
+                ...state, 
+                productName: action.payload.productName,
+                price: action.payload.price,
+                category: action.payload.category,
+                img_url: action.payload.img_url
             }
         default:
             return state;
