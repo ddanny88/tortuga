@@ -40,6 +40,7 @@ class CheckoutCard extends Component {
 
      render() {
         const {  phone, address, city, st, zipcode } = this.props;
+        console.log('sumition', this.props)
         return (
             <div>
                 <div className="checkout-container">
@@ -91,10 +92,10 @@ class CheckoutCard extends Component {
 
 
                       <div>
-                        <Link to="/receipt">
+                        <Link to="/checkout">
                                 <button 
                                     onClick ={this.submitCheckoutInfo}
-                                    className="checkout-btn">next>
+                                    className="checkout-button">CHECKOUT
                                 </button>
                             </Link>
                       </div>
@@ -117,3 +118,7 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {updateAddress, updateCity, updatePhone, updateState, updateZip})(CheckoutCard);
+
+
+
+

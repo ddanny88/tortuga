@@ -1,6 +1,6 @@
 .checkout-container{
-    width: 50vw;
-    height: 40vh;
+    width: 25vw;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,6 +13,8 @@
 }
 .checkout-container input {
     border-radius: 5px;
+    width: 90%;
+    height:30px;;
     border: .5px solid gainsboro;
     margin: 2px;
 }
@@ -47,4 +49,18 @@
 .receipt-rule{
     width: 60%;
     margin: 0 auto;
+}
+
+
+.checkout-button{
+    background: red;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px;
+    color: white;
+}
+.checkout-button:hover{
+    background: rgb(184, 38, 33)
 }

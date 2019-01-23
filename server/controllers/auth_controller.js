@@ -47,7 +47,10 @@ const register = (req, res) => {
                     let user = response[0];
                     // console.log(user);
                     req.session.user = {
-                        username: user.username
+                        username: user.username,
+                        firstName: user.firstname,
+                        lastName: user.lastname,
+                        email: user.email
                     }
                     // console.log(req.session.user);
                     res.status(200).json(req.session.user)
@@ -65,6 +68,11 @@ const getUsername = (req, res) => {
     res.status(200).json(req.session.user)
 }
 
+const getSeshy = (req, res) => {
+    // let fullShesh = [...req.session]
+    res.status(200).json(req.session);
+}
+
 // USER SIGNOUT: 
 const signOut = (req, res) => {
     req.session.destroy();
@@ -76,5 +84,6 @@ module.exports = {
     login,
     register,
     signOut,
-    getUsername
+    getUsername,
+    getSeshy
 }

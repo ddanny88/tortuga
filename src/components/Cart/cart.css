@@ -4,6 +4,10 @@
     height: 100vh;
 }
 
+.middle-content{
+    display: flex;
+    justify-content: center;
+}
 .checkout-button{
     background: red;
     width: 200px;
@@ -15,4 +19,8 @@
 }
 .checkout-button:hover{
     background: rgb(184, 38, 33)
+}
+
+.checkout-botton-content{
+    margin-top: 35px;
 }

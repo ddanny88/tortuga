@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import './cart.css';
 
-
+import CheckoutCard from '../CheckoutCard/CheckoutCard';
 
 class Cart extends Component {
     
@@ -51,13 +51,21 @@ class Cart extends Component {
 
             <div className="cart-container">
                 This is your cart.
-                { cartItems }
+
+
+                <div className="middle-content">
+                <div className="cart-itmes">
+                    { cartItems }
+                        <div className="checkout-botton-content">
+                        <hr className="cart_rule"/>
+                        <p className="total-text">tax: ${this.props.cart.length > 0 ? item.tax : 0.00}</p>
+                        <p className="total-text">total: ${this.props.cart.length > 0 ? item.total : 0.00}</p>
+                </div>
+                </div>
+                    <CheckoutCard />
+                </div>
                 
-                <hr className="cart_rule"/>
-                <p className="total-text">tax: ${this.props.cart.length > 0 ? item.tax : 0.00}</p>
-                <p className="total-text">total: ${this.props.cart.length > 0 ? item.total : 0.00}</p>
-                
-                <Link to="/checkout"><button className="checkout-button" >CHECKOUT</button></Link>
+               
             </div>
         );
     }

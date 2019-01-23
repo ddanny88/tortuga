@@ -43,7 +43,8 @@ const checkoutInfo = (req, res) => {
                 state: checkoutInfo.state,
                 zipcode: checkoutInfo.zipcode,
                 orderNumber: checkoutInfo.checkout_id,
-                dateOrdered: checkoutInfo.order_date
+                dateOrdered: checkoutInfo.order_date,
+                phone: checkoutInfo.phone
             }
             console.log(req.session.user)
             res.status(200).json(req.session);

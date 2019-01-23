@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import'./checkout.css';
-import CheckoutCard from '../CheckoutCard/CheckoutCard';
 import CheckoutReceipt from '../Checkout_receipt/CheckoutReceipt';
+import FinalCheckout from '../FinalCheckout/FinalCheckout';
 
 
 class Checkout extends Component {
     render() {
         return (
             <div className="main-checkout">
-                <CheckoutCard />
+                <FinalCheckout />
                 <CheckoutReceipt />
             </div>
         );

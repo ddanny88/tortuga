@@ -1,0 +1,12 @@
+.final-container{
+    width: 40vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid red; */
+    background: gainsboro;
+    border-radius: 5px;
+    margin-left: 8%;
+    margin-top: 3%;
+}

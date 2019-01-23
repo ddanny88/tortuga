@@ -13,16 +13,16 @@ class CheckoutReceipt extends Component {
 
     componentDidMount(){
         axios.get("/api/getcart")
-        .then(response => {
-            this.setState({
-                cart: response.data
+            .then(response => {
+                this.setState({
+                    cart: response.data
+                })
             })
-        })
     }
     
     render() {
         let drinks = this.state.cart.map( drank => (
-            <p>{drank.product_name}...{drank.price}</p>
+            <p>{drank.product_name}...${drank.price}</p>
         ));
         let item = this.state.cart[this.state.cart.length -1]
         let total = 0;
