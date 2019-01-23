@@ -23,7 +23,7 @@ class CheckoutReceipt extends Component {
     render() {
         let drinks = this.state.cart.map( drank => (
             <p>{drank.product_name}...{drank.price}</p>
-        ))
+        ));
         let item = this.state.cart[this.state.cart.length -1]
         let total = 0;
         let tax = 0;
@@ -35,7 +35,7 @@ class CheckoutReceipt extends Component {
             <div className='side-receipt'>
              
             <p>item(s): {this.state.cart.length}</p>
-            {drinks}
+                {drinks}
             <hr className="receipt-rule"/>
             <p>tax: ${tax}</p>
             <p>total: ${total}</p>

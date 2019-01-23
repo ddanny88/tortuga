@@ -24,8 +24,8 @@ class CartItem extends Component {
                     />
                </div>
                <div className="cart-card-content">
-                    <p>{ name }</p>
-                    <p>$ { price }</p>
+                    <p className="product-text" >{ name }</p>
+                    <p className="product-text" >$ { price }</p>
                     <button id="remove-button" onClick={()=> this.props.deleteItem(this.props.id)}>remove from cart</button>
                </div>
             </div>
