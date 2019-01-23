@@ -15,18 +15,17 @@ class Navigation extends Component {
 
 
     //scroll animation: references the parent element in the component: 
-    handleScroll = () => {
-         requestAnimationFrame(()=> {
-             if(window.scrollY>200){
-                this.nav.current.style.position = "sticky";
-                this.nav.current.style.transition = "1.5s";
-                this.nav.current.style.top = "0";
-             } else{
-                 this.nav.current.style.position = "static"
-             }
-         })
-    }
-    nav = React.createRef()
+    // handleScroll = () => {
+    //      requestAnimationFrame(()=> {
+    //          if(window.scrollY>200){
+    //             this.nav.current.style.position = "sticky";
+    //             this.nav.current.style.top = "0";
+    //          } else{
+    //              this.nav.current.style.position = "static"
+    //          }
+    //      })
+    // }
+    // nav = React.createRef()
    
     handleModal = () => {
         this.props.toggleModal(!this.props.openModal);

@@ -13,7 +13,7 @@ const initialState = {
         address: '',
         city: '',
         st: '',
-        zipcode: 0,
+        zipcode: '',
     //nav username:
         currentUsername: null,
     //new product:

@@ -1,0 +1,9 @@
+.side-receipt{
+    width: 35vw;
+    height: 40vh;
+    /* border: 1px solid green;  */
+    background: gainsboro;
+    border-radius: 5px;
+    margin-top: 3%;
+    margin-left: 10%;
+}

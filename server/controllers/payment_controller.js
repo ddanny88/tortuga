@@ -46,7 +46,7 @@ const checkoutInfo = (req, res) => {
                 dateOrdered: checkoutInfo.order_date
             }
             console.log(req.session.user)
-            res.status(200).json(req.session.user);
+            res.status(200).json(req.session);
         })
         .catch(err => {
             console.log(err)

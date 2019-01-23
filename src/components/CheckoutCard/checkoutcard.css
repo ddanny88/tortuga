@@ -1,0 +1,50 @@
+.checkout-container{
+    width: 50vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    background: gainsboro;
+    border-radius: 5px;
+    margin-left: 8%;
+    margin-top: 6%;
+}
+.checkout-container input {
+    border-radius: 5px;
+    border: .5px solid gainsboro;
+    margin: 2px;
+}
+.first-content{
+    display:flex;
+    flex-direction: column;
+}
+
+.second-content{
+    display:flex;
+    flex-direction: column;
+}
+.checkout-btn{
+    width: 100px;
+    background: green;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.receipt-item{
+    border: 1px solid red;
+}
+.side-receipt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5;
+}
+
+.receipt-rule{
+    width: 60%;
+    margin: 0 auto;
+}
