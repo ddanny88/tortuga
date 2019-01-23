@@ -18,8 +18,6 @@ class Cart extends Component {
         console.log(this.props.cart);
        
     }
-
-    
     deleteItem = (id) => {
         axios.delete(`/api/cart/${id}`)
             .then(() => {

@@ -7,7 +7,26 @@ import Login from '../Login/Login';
 import axios from 'axios';
 import'./nav.css';
 
-class Navigation extends Component {   
+class Navigation extends Component {  
+    
+    componentDidMount(){
+        window.addEventListener("scroll", this.handleScroll)
+    }
+
+
+    //scroll animation: references the parent element in the component: 
+    handleScroll = () => {
+         requestAnimationFrame(()=> {
+             if(window.scrollY>200){
+                this.nav.current.style.position = "sticky";
+                this.nav.current.style.transition = "1.5s";
+                this.nav.current.style.top = "0";
+             } else{
+                 this.nav.current.style.position = "static"
+             }
+         })
+    }
+    nav = React.createRef()
    
     handleModal = () => {
         this.props.toggleModal(!this.props.openModal);
@@ -22,7 +41,7 @@ class Navigation extends Component {
 
     render(){
         return (
-            <nav className="nav-bar-container">
+            <nav className="nav-bar-container" ref={this.nav}>
                 <div>
                     <div><Link to="/">
                     <img src="https://s3.us-east-2.amazonaws.com/tortuga-assets/blue-logo.png" 

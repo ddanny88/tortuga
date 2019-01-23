@@ -1,32 +1,34 @@
 import axios from 'axios';
 
 const initialState = {
-    //customer login/registration
+    //customer login/registration:
         username:'',
         password:'',
         firstName:'', 
         lastName:'',
         email: '',
+    //checkout info: 
+        orderNumber: 0,
         phone: '',
         address: '',
         city: '',
         st: '',
         zipcode: 0,
-    //nav username
+    //nav username:
         currentUsername: null,
-    //new product
+    //new product:
         productName: '',
         price: 0,
         category: '',
         img_url: '',
-    //modal
+    //modal:
         openModal: false, 
         displayLoginContent: false,
         displayForm: false,
         register: false,
-    // products
+    // products:
         products: [],
-    //cart
+    //cart:
         cart: [],
 
     //chart Component: 
@@ -78,6 +80,7 @@ const ADD_PRODUCT_CATEGORY = "ADD_PRODUCT_CATEGORY";
 const ADD_IMG_URL = "ADD_IMG_URL";
 const UPDATE_CURRENT_USERNAME = "UPDATE_CURRENT_USERNAME";
 const CLEAR_NEW_PRODUCT = "CLEAR_NEW_PRODUCT";
+const UPDATE_ORDER_NUMBER = "UPDATE_ORDER_NUMBER";
 
 
 // ACTION FUNCTIONS: 
@@ -153,6 +156,12 @@ export function updateAddress(address){
     return {
         type: UPDATE_ADDRESS,
         payload: address
+    }
+}
+export function updateOrderNumber(orderNum){
+    return {
+        type: UPDATE_ORDER_NUMBER,
+        payload: orderNum
     }
 }
 export function updateCity(city){
@@ -288,6 +297,11 @@ function reducer (state = initialState, action) {
             return {
                 ...state,
                 email: action.payload
+            }
+        case UPDATE_ORDER_NUMBER:
+            return {
+                ...state,
+                orderNum: action.payload
             }
         case UPDATE_ADDRESS:
             return {

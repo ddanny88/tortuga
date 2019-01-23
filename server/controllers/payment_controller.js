@@ -28,8 +28,34 @@ const takePayment = (req, res) => {
     })
 }
 
+
+const checkoutInfo = (req, res) => {
+    const db = req.app.get('db');
+    const {  phone, address, city, st, zipcode } = req.body;
+        db.checkout_info(phone, address, city, st, zipcode)
+        .then( response => {
+            let checkoutInfo = response[0];
+
+            req.session.user = {
+                ...req.session.user,
+                address: checkoutInfo.address, 
+                city: checkoutInfo.city,
+                state: checkoutInfo.state,
+                zipcode: checkoutInfo.zipcode,
+                orderNumber: checkoutInfo.checkout_id,
+                dateOrdered: checkoutInfo.order_date
+            }
+            console.log(req.session.user)
+            res.status(200).json(req.session.user);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
 module.exports = {
-    takePayment
+    takePayment, 
+    checkoutInfo
 }
 
 
