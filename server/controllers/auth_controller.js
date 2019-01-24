@@ -2,34 +2,34 @@ const bcrypt = require('bcryptjs');
 
 
 // USER LOGIN: 
-const login = (req, res) => {
-    const db = req.app.get('db');
-    db.get_user(req.body.username)
-        .then(response => {
-            // console.log(response); //returns an array.
-            let user = response[0];
-            // console.log(user);
-            if(!user){
-                res.status(401).json('USER NOT FOUND.');
-            } else {
-                let isAuthenticated = bcrypt.compareSync(req.body.password, user.password) 
-                // console.log(isAuthenticated);
-                if(!isAuthenticated){
-                    res.status(403).json('INCORRECT PASSWORD.');
-                } else {
-                    // put the user on session:
-                    req.session.user = {
-                        username: user.username
-                    }
-                    // console.log(req.session.user)
-                    res.status(200).json(req.session.user);
-                }
-            }
-        })
-        .catch( err => {
-            console.log(`***${err}***`)
-        });
-};
+// const login = (req, res) => {
+//     const db = req.app.get('db');
+//     db.get_user(req.body.username)
+//         .then(response => {
+//             // console.log(response); //returns an array.
+//             let user = response[0];
+//             // console.log(user);
+//             if(!user){
+//                 res.status(401).json('USER NOT FOUND.');
+//             } else {
+//                 let isAuthenticated = bcrypt.compareSync(req.body.password, user.password) 
+//                 // console.log(isAuthenticated);
+//                 if(!isAuthenticated){
+//                     res.status(403).json('INCORRECT PASSWORD.');
+//                 } else {
+//                     // put the user on session:
+//                     req.session.user = {
+//                         username: user.username
+//                     }
+//                     // console.log(req.session.user)
+//                     res.status(200).json(req.session.user);
+//                 }
+//             }
+//         })
+//         .catch( err => {
+//             console.log(`***${err}***`)
+//         });
+// };
 
 // comppare the reggistration info to that of the form, and that of the table. 
 // USER REGISTRATION: 
@@ -79,6 +79,54 @@ const signOut = (req, res) => {
 }
 
 
+
+
+
+
+
+//TESTING: 
+
+const login = (req, res) => {
+    const db = req.app.get('db');
+    db.get_user(req.body.username)
+        .then(response => {
+            // console.log(response); //returns an array.
+            let user = response[0];
+            // console.log(user);
+            if(!user){
+                res.status(401).json('USER NOT FOUND.');
+            } else {
+                let isAuthenticated = bcrypt.compareSync(req.body.password, user.password) 
+                // console.log(isAuthenticated);
+                if(!isAuthenticated){
+                    res.status(403).json('INCORRECT PASSWORD.');
+
+                } else if (user.is_admin) {
+                    req.session.user = {
+                        isAdmin: true,
+                        username: user.username
+                    }
+                    console.log(req.session.user)
+                    res.status(200).json(req.session.user)
+                } else {
+                     req.session.user = {
+                        username: user.username
+                    }
+                    console.log(req.session.user)
+                    res.status(200).json(req.session.user);
+                }
+            }
+        })
+        .catch( err => {
+            console.log(`***${err}***`)
+        });
+};
+
+
+
+
+
+
 module.exports = {
     login,
     register,
@@ -86,3 +134,6 @@ module.exports = {
     getUsername,
     getSeshy
 }
+
+
+
