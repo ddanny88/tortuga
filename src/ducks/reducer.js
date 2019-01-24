@@ -83,6 +83,7 @@ const CLEAR_NEW_PRODUCT = "CLEAR_NEW_PRODUCT";
 const UPDATE_ORDER_NUMBER = "UPDATE_ORDER_NUMBER";
 
 
+
 // ACTION FUNCTIONS: 
 export function updateCurrentUsername(currentUsername){
     return {
@@ -90,8 +91,6 @@ export function updateCurrentUsername(currentUsername){
         payload: currentUsername
     }
 }
-
-
 export function clearInput(){
     return {
         type: CLEAR_NEW_PRODUCT,
@@ -103,7 +102,6 @@ export function clearInput(){
         }
     }
 }
-
 export function updateChart() {
     return {
         type: UPDATE_CHART,

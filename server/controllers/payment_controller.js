@@ -34,6 +34,7 @@ const checkoutInfo = (req, res) => {
     const {  phone, address, city, st, zipcode } = req.body;
         db.checkout_info(phone, address, city, st, zipcode)
         .then( response => {
+            console.log(response)
             let checkoutInfo = response[0];
 
             req.session.user = {
@@ -44,7 +45,8 @@ const checkoutInfo = (req, res) => {
                 zipcode: checkoutInfo.zipcode,
                 orderNumber: checkoutInfo.checkout_id,
                 dateOrdered: checkoutInfo.order_date,
-                phone: checkoutInfo.phone
+                phone: checkoutInfo.phone,
+                checkoutId: checkoutInfo.checkout_id
             }
             console.log(req.session.user)
             res.status(200).json(req.session);
@@ -54,9 +56,35 @@ const checkoutInfo = (req, res) => {
         })
 }
 
+
+// add the updated info to the session:
+const updateCheckout = (req, res) => {
+    const db = req.app.get('db');
+    const { phone , address, city, st, zipcode } = req.body;
+    db.update_checkout(phone, address, city, st, zipcode, req.params.id)
+        .then( response => {
+            let updatedInfo = response[0];
+            console.log(updatedInfo)
+
+            req.session.user = {
+                ...req.session.user,
+                phone: updatedInfo.phone,
+                address: updatedInfo.address,
+                city: updatedInfo.city,
+                state: updatedInfo.state,
+                zipcode: updatedInfo.zipcode
+            }
+            res.status(200).json(req.session)
+        })
+        .catch( err => {
+            console.log(err);
+        })
+}
+
 module.exports = {
     takePayment, 
-    checkoutInfo
+    checkoutInfo, 
+    updateCheckout
 }
 
 

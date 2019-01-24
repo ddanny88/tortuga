@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CartItem from './Cart_Item/CartItem';
-import { Link } from 'react-router-dom';
 import { getCart } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import axios from 'axios';

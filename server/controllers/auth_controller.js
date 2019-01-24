@@ -69,7 +69,6 @@ const getUsername = (req, res) => {
 }
 
 const getSeshy = (req, res) => {
-    // let fullShesh = [...req.session]
     res.status(200).json(req.session);
 }
 
