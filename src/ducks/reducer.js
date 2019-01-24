@@ -7,6 +7,7 @@ const initialState = {
         firstName:'', 
         lastName:'',
         email: '',
+        isAdmin: false,
     //checkout info: 
         orderNumber: 0,
         phone: '',
@@ -54,7 +55,6 @@ const initialState = {
         }
 }
 
-
 // ACTION TYPES: 
 const GET_PRODUCTS = "GET_PRODUCTS";
 const GET_CART = "GET_CART";
@@ -81,6 +81,7 @@ const ADD_IMG_URL = "ADD_IMG_URL";
 const UPDATE_CURRENT_USERNAME = "UPDATE_CURRENT_USERNAME";
 const CLEAR_NEW_PRODUCT = "CLEAR_NEW_PRODUCT";
 const UPDATE_ORDER_NUMBER = "UPDATE_ORDER_NUMBER";
+const UPDATE_ADMIN = "UPDATE_ADMIN";
 
 
 
@@ -89,6 +90,12 @@ export function updateCurrentUsername(currentUsername){
     return {
         type: UPDATE_CURRENT_USERNAME,
         payload: currentUsername
+    }
+}
+export function updateAdmin(admin){
+    return {
+        type: UPDATE_ADMIN,
+        payload: admin
     }
 }
 export function clearInput(){
@@ -385,6 +392,11 @@ function reducer (state = initialState, action) {
                 price: action.payload.price,
                 category: action.payload.category,
                 img_url: action.payload.img_url
+            }
+        case UPDATE_ADMIN: 
+            return {
+                ...state,
+                isAdmin: action.payload
             }
         default:
             return state;

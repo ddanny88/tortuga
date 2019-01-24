@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUsername, updatePassword, updateCurrentUsername, toggleFormDisplay, toggleModal, toggleRegister } from '../../ducks/reducer';
+import { updateUsername, updatePassword, updateCurrentUsername, toggleFormDisplay, toggleModal, toggleRegister, updateAdmin } from '../../ducks/reducer';
 import Registration from "../Registration/Registration";
 import axios from 'axios';
 import './login.css';
@@ -36,9 +36,17 @@ class Login extends Component {
        e.preventDefault();
         axios.post('/api/auth/login', { username, password })
             .then( user => {
-                // console.log(user)
-                this.updateCurrentUser(user.data.username)
-                this.props.toggleModal(false);
+                // console.log(user.data.isAdmin)
+                if(user.data.isAdmin){
+                    this.props.updateAdmin(true);
+                    this.updateCurrentUser(user.data.username);
+                    this.props.toggleModal(false);
+
+                } else {
+                    this.updateCurrentUser(user.data.username)
+                    this.props.toggleModal(false);
+                }
+               
             }) 
             .catch(err => {
                 alert('Unauthorized User.', err)
@@ -93,15 +101,16 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { username, password, openModal, currentUsername, displayForm, register } = state;
+    const { username, password, openModal, currentUsername, displayForm, register, isAdmin } = state;
     return {
         username, 
         password,
         openModal,
         currentUsername,
         displayForm,
-        register
+        register,
+        isAdmin
     }
 }
 
-export default connect(mapStateToProps, {updateUsername, updatePassword, updateCurrentUsername, toggleFormDisplay, toggleModal, toggleRegister })(Login);
+export default connect(mapStateToProps, {updateUsername, updatePassword, updateCurrentUsername, toggleFormDisplay, toggleModal, toggleRegister, updateAdmin })(Login);

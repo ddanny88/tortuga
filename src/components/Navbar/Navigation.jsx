@@ -1,19 +1,16 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay } from '../../ducks/reducer';
+import { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay, updateAdmin } from '../../ducks/reducer';
 import Modal from '../Modal/Modal';
 import Login from '../Login/Login';
 import axios from 'axios';
 import'./nav.css';
 
 class Navigation extends Component {  
-    
-    componentDidMount(){
-        window.addEventListener("scroll", this.handleScroll)
-    }
-
-
+    // componentDidMount(){
+    //     window.addEventListener("scroll", this.handleScroll)
+    // }
     //scroll animation: references the parent element in the component: 
     // handleScroll = () => {
     //      requestAnimationFrame(()=> {
@@ -26,6 +23,11 @@ class Navigation extends Component {
     //      })
     // }
     // nav = React.createRef()
+
+
+
+
+
    
     handleModal = () => {
         this.props.toggleModal(!this.props.openModal);
@@ -33,9 +35,12 @@ class Navigation extends Component {
    
     signOut = () => {
         axios.get('/api/auth/signout')
-        .then(() => {
-            this.props.updateCurrentUsername(null)
-        })
+            .then(() => {
+                this.props.updateCurrentUsername(null)
+                if(this.props.isAdmin){
+                    this.props.updateAdmin(false);
+                }
+            })
     }
 
     render(){
@@ -53,6 +58,7 @@ class Navigation extends Component {
                             {this.props.currentUsername ? <li className="current_user"> @{this.props.currentUsername}</li> : <li><Link to="/"><button className="login-button" onClick={ this.handleModal }>login</button></Link></li>}
                             {this.props.currentUsername ? <li><button className="sign_out_button" onClick={this.signOut}>sign out</button></li>: null}
                             <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li>
+                            {this.props.isAdmin ? <li><Link to="/login/admin"><button>admin stuff</button></Link></li> : null }
                         </ul>
                 </div> 
                 <Modal display={ this.props.openModal } toggleDisplay={ this.handleModal }  ModalContent={ Login } />
@@ -62,12 +68,13 @@ class Navigation extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { openModal, displayLoginContent, currentUsername } = state;
+    const { openModal, displayLoginContent, currentUsername, isAdmin } = state;
     return {
         openModal, 
         displayLoginContent, 
-        currentUsername
+        currentUsername,
+        isAdmin
     }
 }
 
-export default connect(mapStateToProps, { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay })(Navigation);
+export default connect(mapStateToProps, { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay, updateAdmin })(Navigation);
