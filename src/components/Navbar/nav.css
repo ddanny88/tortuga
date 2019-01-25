@@ -1,6 +1,6 @@
 .nav-bar-container{
     width: 100vw;
-    height: 90px;
+    height: 50px;
     background:black;
     display: flex;
     justify-content: center;
@@ -11,17 +11,8 @@
 }
 .current_user{
     color: white;
+    font-size: 18px;
 }
-
-/* height: 70px;
-width: 100vw;
-
-background:rgba(255,255,255,0);
-color: white;
-
-display: flex;
-justify-content: space-evenly;
-align-items: center; */
 
 .list-item{
     list-style: none;
@@ -32,15 +23,14 @@ align-items: center; */
     height: 40px;
     border-radius: 5px;
     border: none;
-    background: rgb(108, 233, 233);
-    color: black;
+    background: #307267;
+    color: white;
     padding: 5px;
     cursor: pointer;
-}
-.login-button:hover{
-    background: rgb(177, 63, 63);
+    font-size: 18px;
 
 }
+
 .middle-content{
     height: 40vh;
     width: 100vw;
@@ -48,8 +38,8 @@ align-items: center; */
 
 .main-logo{
     margin-left: 100%;
-    width: 85px;
-    height: 80px;
+    width: 90px;
+    height: 40px;
 }
 .main-nav{
     list-style: none;
@@ -69,11 +59,6 @@ align-items: center; */
     transition: border-bottom 0.3s;
 }
 
-.main-nav li a:hover, 
-.main-nav li a:active {
-    border-bottom: 2px solid rgb(184, 20, 20);
-}
-
 .fa-shopping-cart{
     color: white;
     font-size: 25px;
@@ -84,12 +69,46 @@ align-items: center; */
 }
 
 .sign_out_button{
-    width: 100px;
+    width: 85px;
     height: 40px;
     border-radius: 5px;
     border: none;
-    background: rgb(108, 233, 233);
-    color: black;
+    background: #307267;
+    color: white;
     padding: 5px;
     cursor: pointer;
+    font-size: 18px;
+}
+
+.item-count{
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: rgb(255, 78, 24);
+    position: absolute;
+    top: 14px;
+    right: 0px;
+    color: white;
+   
+
+}
+.item-count1{
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    position: relative;
+    top: px;
+    right: 0px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 13px;
+    right: -4.5px;
+}
+
+.modal-logo{
+    width: 30%;
+    height: 30%;
+    margin: 5%;
 }

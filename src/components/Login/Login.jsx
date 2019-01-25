@@ -75,7 +75,11 @@ class Login extends Component {
                     this.props.displayForm && (
                         <>
                             
-                            <form onSubmit={this.login} className={ this.props.openModal ? "form-container" : "form-container-closed" }>
+                            <form onSubmit={this.login} className={ this.props.openModal ? "form-container" : "form-container-closed" }>.
+                                    <img 
+                                    src="https://s3.us-east-2.amazonaws.com/tortuga-assets/main-logo-tortuga.png" alt="tortuga"
+                                    className="modal-logo"
+                                    />
                                     <input 
                                             type="text"
                                             onChange={this.handleUsername} 

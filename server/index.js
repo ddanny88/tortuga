@@ -5,6 +5,7 @@ const session = require("express-session");
 const massive = require("massive");
 const authController = require('./controllers/auth_controller');
 const cc = require('./controllers/cart_controller');
+const aws = require('./controllers/aws_controller');
 const { checkCart } = require('./middleware/authMiddleware');
 const pay_controller = require('./controllers/payment_controller');
 const proController = require('./controllers/prod_controller');
@@ -32,6 +33,11 @@ app.use(
 );
 
 
+
+
+
+//AWS: 
+app.post('/api/upload',aws.uploadFile);
 
 
 // AUTHORIZATION: 

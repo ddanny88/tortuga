@@ -8,6 +8,7 @@ const initialState = {
         lastName:'',
         email: '',
         isAdmin: false,
+        DLFile: 'https://s3.us-east-2.amazonaws.com/users-id/mclovin.jpg',
     //checkout info: 
         orderNumber: 0,
         phone: '',
@@ -82,10 +83,16 @@ const UPDATE_CURRENT_USERNAME = "UPDATE_CURRENT_USERNAME";
 const CLEAR_NEW_PRODUCT = "CLEAR_NEW_PRODUCT";
 const UPDATE_ORDER_NUMBER = "UPDATE_ORDER_NUMBER";
 const UPDATE_ADMIN = "UPDATE_ADMIN";
-
+const UPLOAD_DL = "UPLOAD_DL";
 
 
 // ACTION FUNCTIONS: 
+export function uploadDL(file){
+    return {
+        type: UPLOAD_DL,
+        payload: file
+    }
+}
 export function updateCurrentUsername(currentUsername){
     return {
         type: UPDATE_CURRENT_USERNAME,
@@ -397,6 +404,11 @@ function reducer (state = initialState, action) {
             return {
                 ...state,
                 isAdmin: action.payload
+            }
+        case UPLOAD_DL: 
+            return {
+                ...state,
+                DLFile: action.payload
             }
         default:
             return state;

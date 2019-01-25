@@ -1,33 +1,31 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay, updateAdmin } from '../../ducks/reducer';
+import { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay, updateAdmin, getCart } from '../../ducks/reducer';
 import Modal from '../Modal/Modal';
 import Login from '../Login/Login';
 import axios from 'axios';
 import'./nav.css';
 
 class Navigation extends Component {  
-    // componentDidMount(){
-    //     window.addEventListener("scroll", this.handleScroll)
-    // }
-    //scroll animation: references the parent element in the component: 
-    // handleScroll = () => {
-    //      requestAnimationFrame(()=> {
-    //          if(window.scrollY>200){
-    //             this.nav.current.style.position = "sticky";
-    //             this.nav.current.style.top = "0";
-    //          } else{
-    //              this.nav.current.style.position = "static"
-    //          }
-    //      })
-    // }
-    // nav = React.createRef()
+    componentDidMount(){
+        this.props.getCart()
+        window.addEventListener("scroll", this.handleScroll)
+    }
+    // scroll animation: references the parent element in the component: 
+    handleScroll = () => {
+         requestAnimationFrame(()=> {
+             if(window.scrollY>200){
+                this.nav.current.style.position = "sticky";
+                this.nav.current.style.top = "0";
+             } else{
+                 this.nav.current.style.position = "static"
+             }
+         })
+    }
+    nav = React.createRef()
 
-
-
-
-
+   
    
     handleModal = () => {
         this.props.toggleModal(!this.props.openModal);
@@ -44,11 +42,13 @@ class Navigation extends Component {
     }
 
     render(){
+        console.log(this.props.cart)
+        let cartLength = this.props.cart.length;
         return (
             <nav className="nav-bar-container" ref={this.nav}>
                 <div>
                     <div><Link to="/">
-                    <img src="https://s3.us-east-2.amazonaws.com/tortuga-assets/blue-logo.png" 
+                    <img src="https://s3.us-east-2.amazonaws.com/tortuga-assets/text-only-logo.png" 
                         alt="main-logo" 
                         className="main-logo"
                     /></Link></div>
@@ -57,8 +57,11 @@ class Navigation extends Component {
                         <ul className="main-nav">
                             {this.props.currentUsername ? <li className="current_user"> @{this.props.currentUsername}</li> : <li><Link to="/"><button className="login-button" onClick={ this.handleModal }>login</button></Link></li>}
                             {this.props.currentUsername ? <li><button className="sign_out_button" onClick={this.signOut}>sign out</button></li>: null}
-                            <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li>
-                            {this.props.isAdmin ? <li><Link to="/login/admin"><button>admin stuff</button></Link></li> : null }
+                          
+                            <div className="item-count"></div>
+                            <div className="item-count1">{cartLength}</div>
+
+                            {this.props.isAdmin ? <li><Link to="/login/admin"><button>admin stuff</button></Link></li> : <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li> }
                         </ul>
                 </div> 
                 <Modal display={ this.props.openModal } toggleDisplay={ this.handleModal }  ModalContent={ Login } />
@@ -68,13 +71,14 @@ class Navigation extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { openModal, displayLoginContent, currentUsername, isAdmin } = state;
+    const { openModal, displayLoginContent, currentUsername, isAdmin, cart } = state;
     return {
         openModal, 
         displayLoginContent, 
         currentUsername,
-        isAdmin
+        isAdmin,
+        cart
     }
 }
 
-export default connect(mapStateToProps, { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay, updateAdmin })(Navigation);
+export default connect(mapStateToProps, { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay, updateAdmin, getCart})(Navigation);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {updateAddress, updateCity, updatePhone, updateState, updateZip} from '../../ducks/reducer';
+import {updateAddress, updateCity, updatePhone, updateState, updateZip, uploadDL} from '../../ducks/reducer';
 import './final.css';
 
 
@@ -87,6 +87,11 @@ class FinalCheckout extends Component {
             });
     }
 
+    handleFile = (e) => {
+        this.props.uploadDL(e.target.value);
+        console.log(e.target.value);
+    }
+
     render() {
         let user;
         console.log(this.state.userInfo)
@@ -131,20 +136,38 @@ class FinalCheckout extends Component {
                       <button onClick={this.handleCancel} className="cancel-btn">cancel</button></div>
                   </div>              
                 }
+               <br/>
+               <h3>DL UPLOAD:  </h3>
+                    <img 
+                        src={this.props.DLFile ? this.props.DLFile : "https://s3.us-east-2.amazonaws.com/users-id/placeholder_dl.png"} 
+                        alt="license"
+                        className="dl-pic"
+                    />
+                    <form>
+                        <input 
+                            type="file" 
+                            name="file" 
+                            id="file" 
+                            class="inputfile" 
+                            onChange={this.handleFile}
+                        />
+                        <label for="file"><i class="fas fa-camera"></i></label>
+                    </form>
             </div>
         );
     }
 }
 
 function mapStateToProps(state){
-    const {phone, address, city, st, zipcode} = state;
+    const {phone, address, city, st, zipcode, DLFile} = state;
     return {
         phone,
         address,
         city,
         st,
-        zipcode
+        zipcode,
+        DLFile
     }
 }
-export default connect(mapStateToProps, {updateAddress, updateCity, updatePhone, updateState, updateZip})(FinalCheckout);
+export default connect(mapStateToProps, {updateAddress, updateCity, updatePhone, updateState, updateZip, uploadDL})(FinalCheckout);
 
