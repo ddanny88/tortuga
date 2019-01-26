@@ -31,29 +31,7 @@ const initialState = {
     // products:
         products: [],
     //cart:
-        cart: [],
-
-    //chart Component: 
-        chartData: {
-            labels: ['Dallas', 'El Paso', 'Austin', 'Houston'],
-            datasets: [
-                {
-                    label: 'Size',
-                    data: [
-                        500,
-                        200,
-                        300,
-                        400
-                    ],
-                    backgroundColor:[
-                        "rgba(255,99,123,0.6)",
-                        "rgba(54,162,235,0.6)",
-                        "rgba(255,159,64,0.6)",
-                        "rgba(75,192,192,0.6)"
-                    ]
-                }
-            ]
-        }
+        cart: []
 }
 
 // ACTION TYPES: 
@@ -74,7 +52,7 @@ const UPDATE_REGISTER = "UPDATE_REGISTER";
 const HANDLE_CONTENT = "HANDLE_CONTENT";
 const UPDATE_FORM_DISPLAY = "UPDATE_FORM_DISPLAY";
 const UPDATE_CART = "UPDATE_CART";
-const UPDATE_CHART = "UPDATE_CHART";
+const GET_CHART = "UPDATE_CHART";
 const ADD_PRODUCT_NAME = "ADD_PRODUCT_NAME";
 const ADD_PRODUCT_PRICE = "ADD_PRODUCT_PRICE";
 const ADD_PRODUCT_CATEGORY = "ADD_PRODUCT_CATEGORY";
@@ -84,15 +62,8 @@ const CLEAR_NEW_PRODUCT = "CLEAR_NEW_PRODUCT";
 const UPDATE_ORDER_NUMBER = "UPDATE_ORDER_NUMBER";
 const UPDATE_ADMIN = "UPDATE_ADMIN";
 const UPLOAD_DL = "UPLOAD_DL";
-const UPDATE_CHART_INFO = "UPDATE_CHART_INFO";
 
-// ACTION FUNCTIONS: 
-export function updatechartInfo(chart){
-    return {
-        type: UPDATE_CHART_INFO,
-        payload: chart
-    }
-}
+
 export function uploadDL(file){
     return {
         type: UPLOAD_DL,
@@ -122,9 +93,9 @@ export function clearInput(){
         }
     }
 }
-export function updateChart() {
+export function getChart() {
     return {
-        type: UPDATE_CHART,
+        type: GET_CHART,
         payload: axios.get('/api/getchartdata')
     }
 }
@@ -268,6 +239,7 @@ export function addProductImgUrl(url){
 
 // REDUCER FUNCTION: 
 function reducer (state = initialState, action) {
+    console.log('reducer start')
     switch (action.type) {
         case `${GET_PRODUCTS}_FULFILLED`: 
             return {
@@ -368,7 +340,7 @@ function reducer (state = initialState, action) {
                 ...state,
                 displayLoginContent: action.payload
             }
-        case UPDATE_CHART: 
+        case GET_CHART: 
             return {
                 ...state,
                 chart: action.payload
@@ -420,5 +392,6 @@ function reducer (state = initialState, action) {
             return state;
     }
 }
-
 export default reducer;
+
+

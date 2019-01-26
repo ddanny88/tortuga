@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ChartComponent from '../Chart/ChartComponent';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { addProductName, addProductPrice, addProductCategory, addProductImgUrl, clearInput } from '../../ducks/reducer';
+import { addProductName, addProductPrice, addProductCategory, addProductImgUrl, clearInput} from '../../ducks/reducer';
 import'./admin.css';
 
 
@@ -15,6 +15,8 @@ class Admin extends Component {
             displayAddItem: false
         }
     }
+
+
 
     //ADD ITEM FORM: 
         displayControl = () => {
@@ -48,11 +50,6 @@ class Admin extends Component {
             this.props.addProductImgUrl(e.target.value);
         }
 
-
-
-
-    
-
     render() {
         const { productName, price, category, img_url } =  this.props;
         return (
@@ -61,7 +58,7 @@ class Admin extends Component {
 
                 {/* THE CHART COMPONENT:  */}
                 <ChartComponent />
-
+              
                 <div>
                     <hr className="admin-rule"/>
                    
@@ -117,7 +114,7 @@ function mapStateToProps(state){
         productName, 
         price,
         category,
-        img_url
+        img_url, 
     }
 }
 

@@ -109,6 +109,7 @@ const orderInfo = (req, res) => {
         });
 }
 
+
 // used in cart.js needs sum function 
 const getOrders = (req, res) => {
     const db = req.app.get('db')
@@ -134,6 +135,60 @@ const getFullOrder = (req, res) => {
 
 
 
+//RETURNS AN ARRAY OF category counts: 
+const getProductCategories = (req, res) => {
+    const db = req.app.get('db');
+
+    db.get_product_categories()
+        .then(response => {
+            let categoryArray = [];
+            for(let i=0; i < response.length; i++){
+                categoryArray = categoryArray.concat(response[i].product_category.split(','));
+            }
+            let wineCount = 0;
+            let beerCount = 0;
+            let liquorCount = 0;
+            
+            for(let i=0; i< categoryArray.length; i++){
+                if(categoryArray[i] === 'Wine'){
+                    wineCount = wineCount + 1;
+                } else if(categoryArray[i] === 'Beer'){
+                    beerCount = beerCount + 1;
+                } else {
+                    liquorCount = liquorCount + 1;
+                }
+            }   
+
+            let chartData = {
+                labels: ['Liquor', 'Wine', 'Beer'],
+                datasets: [
+                    {
+                        label: 'YTD Quantity',
+                        data: [liquorCount, wineCount, beerCount],
+                        backgroundColor:[
+                            "rgba(255,99,123,0.6)",
+                            "rgba(255,159,64,0.6)",
+                            "rgba(75,192,192,0.6)"
+                        ]
+                    }
+                ]
+            }
+            res.status(200).json(chartData)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+
+const getTotal = (req, res) => {
+    const db = req.app.get('db');
+
+    db.get_total()
+        .then()
+}
+
+
 
 module.exports = {
     takePayment, 
@@ -141,7 +196,9 @@ module.exports = {
     updateCheckout,
     orderInfo,
     getOrders, 
-    getFullOrder
+    getFullOrder, 
+    getProductCategories, 
+    getTotal
 }
 
 

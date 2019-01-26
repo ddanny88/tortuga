@@ -63,8 +63,9 @@ app.put('/api/updatecheckout/:id', pay_controller.updateCheckout);
 app.post('/api/addproduct', proController.addNewProduct);
 app.post('/api/orderinfo', pay_controller.orderInfo);
 app.get('/api/getorders', pay_controller.getOrders);
+app.get('/api/getcategories', pay_controller.getProductCategories);
 //CHART DATA:
-app.get('/api/getchartdata')
+// app.get('/api/getchartdata')
 //ADMIN ACCESS: 
 // app.get('/api/login/admin', authController)
 

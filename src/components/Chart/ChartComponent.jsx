@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Bar  } from 'react-chartjs-2';
+import axios from 'axios';
 
 // import {} from '../../ducks/reducer';
 
@@ -9,16 +10,29 @@ import { connect } from 'react-redux';
 
 // the data will be held in state and stored inside of a data component. 
 class ChartComponent extends Component {
-    // you can set default props: 
-    // static defaultProps = {
 
-    // }
+    constructor(){
+        super();
+        this.state = {
+            chartData: {}
+        }
+    }
+    
+    componentDidMount(){
+        axios.get('/api/getcategories')
+            .then(response => {
+              this.setState({
+                  chartData: response.data
+              })
+            })
+            .catch( err => console.log(err))
+    }
 
     render(){
         return (
             <div>
                 <Bar
-                    data={ this.props.chartData }
+                    data={ this.state.chartData }
                     width={400}
                     height={400}
                     options={{
@@ -26,7 +40,7 @@ class ChartComponent extends Component {
                         maintainAspectRatio: false,
                         title: {
                             display: true,
-                            text: "Example Chart",
+                            text: "Tortuga Analytics",
                             fontSize: 30
                         }
                     }}
@@ -42,6 +56,4 @@ function mapStateToProps(state) {
         chartData
     }
 }
-
-
 export default connect(mapStateToProps)(ChartComponent);
