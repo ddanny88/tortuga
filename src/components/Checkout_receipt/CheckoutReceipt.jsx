@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Payment from '../Payment/Payment';
 import'./side_receipt.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateCurrentUsername, getCart, updateAdmin } from '../../ducks/reducer';
 
 class CheckoutReceipt extends Component {
     constructor(props){
@@ -22,10 +25,18 @@ class CheckoutReceipt extends Component {
     
 
 
-    handleTest = () => {
-        axios.get('/api/orderinfo')
-            .then( response => {
-                console.log(response)
+    handleOrder = () => {
+        axios.post('/api/orderinfo')
+            .then( () => {
+                // console.log("response from orderInfo", response)
+                axios.get('/api/auth/signout')
+                    .then( () => {
+                        this.props.updateCurrentUsername(null)
+                        if(this.props.isAdmin){
+                            this.props.updateAdmin(false);
+                        }
+                        this.props.getCart();
+                    })
             })  
             .catch( err => {
                 console.log("****", err)
@@ -51,11 +62,16 @@ class CheckoutReceipt extends Component {
             <p>tax: ${tax}</p>
             <p>total: ${total}</p>
             <Payment />
-            <button onClick={this.handleTest}>  test  </button>
+            <Link to="/receipt"><button onClick={this.handleOrder}>SET SAIL!</button></Link>
 
             </div>
         );
     }
 }
-
-export default CheckoutReceipt;
+const mapStateToProps = (state) => {
+    const  {isAdmin} = state;
+    return {
+        isAdmin
+    }
+}
+export default connect(mapStateToProps, { updateCurrentUsername, getCart, updateAdmin })(CheckoutReceipt);

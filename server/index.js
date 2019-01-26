@@ -61,7 +61,7 @@ app.post('/api/charge', checkCart, pay_controller.takePayment);
 app.post('/api/checkoutinfo', checkCart, pay_controller.checkoutInfo );
 app.put('/api/updatecheckout/:id', pay_controller.updateCheckout);
 app.post('/api/addproduct', proController.addNewProduct);
-app.get('/api/orderinfo', pay_controller.orderInfo);
+app.post('/api/orderinfo', pay_controller.orderInfo);
 app.get('/api/getorders', pay_controller.getOrders);
 //CHART DATA:
 app.get('/api/getchartdata')

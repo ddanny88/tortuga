@@ -84,13 +84,12 @@ const updateCheckout = (req, res) => {
 }
 
 
-   //TEST THIS!!!!!!!!
 const orderInfo = (req, res) => {    
     const db = req.app.get('db');
 
     let total = req.session.cart[req.session.cart.length - 1].total;
     let cart = req.session.cart;
-    let checkoutID = req.session.user.checkoutId
+    let checkoutID = req.session.user.checkoutId;
     let category = '';
     for (let i = 0; i < cart.length; i++) {
          if(cart[i].category){
@@ -109,7 +108,8 @@ const orderInfo = (req, res) => {
             console.log(err);
         });
 }
-   //TEST THIS!!!!!!!!
+
+// used in cart.js needs sum function 
 const getOrders = (req, res) => {
     const db = req.app.get('db')
     db.get_order()
@@ -121,7 +121,16 @@ const getOrders = (req, res) => {
         });
 }       
 
-
+const getFullOrder = (req, res) => {
+    const db = req.app.get('db');
+    db.get_full_order()
+        .then(response => {
+            res.status(200).json(response)
+        })
+        .catch(err => {
+            console.log(err)
+        });
+}
 
 
 
@@ -131,7 +140,8 @@ module.exports = {
     checkoutInfo, 
     updateCheckout,
     orderInfo,
-    getOrders
+    getOrders, 
+    getFullOrder
 }
 
 

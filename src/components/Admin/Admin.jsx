@@ -16,36 +16,39 @@ class Admin extends Component {
         }
     }
 
-    displayControl = () => {
-        this.setState({
-            displayAddItem: !this.state.displayAddItem
-        });
-    }
-    addNewProduct = () => {
-        const { productName, price, category, img_url } = this.props;
-        // console.log(productName, price, category, img_url);
-        axios.post('/api/addproduct', { productName, price, category, img_url} );
-        this.props.clearInput();
-    }
-    handleCancel = () => {
-        this.displayControl();
-    }
+    //ADD ITEM FORM: 
+        displayControl = () => {
+            this.setState({
+                displayAddItem: !this.state.displayAddItem
+            });
+        }
+        addNewProduct = () => {
+            const { productName, price, category, img_url } = this.props;
+            // console.log(productName, price, category, img_url);
+            axios.post('/api/addproduct', { productName, price, category, img_url} );
+            this.props.clearInput();
+        }
+        handleCancel = () => {
+            this.displayControl();
+        }
 
-    handleProductName = (e) => {
-       this.props.addProductName(e.target.value);
-    }
+        handleProductName = (e) => {
+        this.props.addProductName(e.target.value);
+        }
 
-    handlePrice = (e) => {
-        this.props.addProductPrice(e.target.value);
-    }
+        handlePrice = (e) => {
+            this.props.addProductPrice(e.target.value);
+        }
 
-    handleCategory = (e) => {
-        this.props.addProductCategory(e.target.value);
-    }
+        handleCategory = (e) => {
+            this.props.addProductCategory(e.target.value);
+        }
 
-    handleImgUrl = (e) => {
-        this.props.addProductImgUrl(e.target.value);
-    }
+        handleImgUrl = (e) => {
+            this.props.addProductImgUrl(e.target.value);
+        }
+
+
 
 
     
@@ -56,6 +59,7 @@ class Admin extends Component {
             <div className="admin-container">
                 This is the Admin page:
 
+                {/* THE CHART COMPONENT:  */}
                 <ChartComponent />
 
                 <div>
@@ -101,7 +105,6 @@ class Admin extends Component {
                       </div>
                     </div>
                 ) : null}
-                <hr/>
                 ORDER LOOKUP: access certain order through form that querys the orders database
             </div>
         );

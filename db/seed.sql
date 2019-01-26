@@ -32,7 +32,6 @@ CREATE TABLE checkout (
     user_id INT REFERENCES users(user_Id)
 )
 
-
 CREATE TABLE orders (
     order_Id SERIAL PRIMARY KEY,
     product_category VARCHAR(50),
@@ -44,8 +43,14 @@ CREATE TABLE orders (
 
 
 update users set is_admin = true where user_id = 1;
-SELECT SUM(price) from orders;
 
+-- get the sum total of all the orders;
+SELECT SUM(order_total) from orders;
+
+select * 
+from users 
+join checkout on users.user_id = checkout.user_id
+join orders on checkout.checkout_id = orders.checkout_id;
 -- in the admin page, the admin can add in more inventory. 
 -- should the billing info referece the shipping info? 
 
@@ -67,14 +72,3 @@ where customer.customerId = invoice.customerId; */
 
 INSERT INTO products (product_name, price, category, img_url)
 VALUES('Crown Royal', '44.99','Whiskey', 'https://s3.us-east-2.amazonaws.com/tortuga-assets/crown.jpg');
-CREATE TABLE orders (
-    order_Id SERIAL PRIMARY KEY,
-    firstName VARCHAR(50) REFERENCES users(firstName),
-    lastName VARCHAR(50) REFERENCES users(lastName),
-    customer_Id INT NOT NULL REFERENCES users(customer_Id),
-    category TEXT REFERENCES products(category), 
-    product_Id INT NOT NULL REFERENCES products(product_Id),
-    price DECIMAL REFERENCES products(price),
-    product_name TEXT REFERENCES products(product_name),
-    order_date DATE REFERENCES checkout(order_date)
-);

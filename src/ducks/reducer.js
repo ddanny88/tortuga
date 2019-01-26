@@ -84,9 +84,15 @@ const CLEAR_NEW_PRODUCT = "CLEAR_NEW_PRODUCT";
 const UPDATE_ORDER_NUMBER = "UPDATE_ORDER_NUMBER";
 const UPDATE_ADMIN = "UPDATE_ADMIN";
 const UPLOAD_DL = "UPLOAD_DL";
-
+const UPDATE_CHART_INFO = "UPDATE_CHART_INFO";
 
 // ACTION FUNCTIONS: 
+export function updatechartInfo(chart){
+    return {
+        type: UPDATE_CHART_INFO,
+        payload: chart
+    }
+}
 export function uploadDL(file){
     return {
         type: UPLOAD_DL,
