@@ -16,8 +16,7 @@ CREATE TABLE users(
     lastName VARCHAR(50),
     email VARCHAR(60),
     username VARCHAR(50),
-    password VARCHAR(150),
-    verification VARCHAR(150) --id
+    password VARCHAR(150)
 )
 
 
@@ -29,47 +28,23 @@ CREATE TABLE checkout (
     city VARCHAR(20),
     state VARCHAR(2),
     zipcode VARCHAR(10),
-    order_date DATE DEFAULT CURRENT_DATE
+    order_date DATE DEFAULT CURRENT_DATE,
+    user_id INT REFERENCES users(user_Id)
 )
 
 
 CREATE TABLE orders (
     order_Id SERIAL PRIMARY KEY,
-    customer_Id INT NOT NULL REFERENCES users(user_Id),
-    product_Id INT NOT NULL REFERENCES products(product_Id)
+    product_category VARCHAR(50),
+    price DECIMAL,
+    checkout_Id INT NOT NULL REFERENCES checkout(checkout_Id),
+    product_name VARCHAR(50),
+    order_total DECIMAL
 );
-
-
-
-CREATE TABLE orders (
-    order_Id SERIAL PRIMARY KEY,
-    firstName VARCHAR(50) REFERENCES users(firstName),
-    lastName VARCHAR(50) REFERENCES users(lastName),
-    customer_Id INT NOT NULL REFERENCES users(customer_Id),
-    category TEXT REFERENCES products(category), 
-    product_Id INT NOT NULL REFERENCES products(product_Id),
-    price DECIMAL REFERENCES products(price),
-    product_name TEXT REFERENCES products(product_name),
-    order_date DATE REFERENCES checkout(order_date)
-);
-
-
-    -- billingAddress VARCHAR(50),
-    -- billingCity VARCHAR(20),
-    -- billingState VARCHAR(2),
-    -- billingZip VARCHAR(10),
- 
-
-SELECT SUM(price) from orders;
-
-CREATE TABLE category_sales (
-    sales_id SERIAL PRIMARY KEY, 
-    salsesTotal DECIMAL,
-    category TEXT REFERENCES 
-)
 
 
 update users set is_admin = true where user_id = 1;
+SELECT SUM(price) from orders;
 
 -- in the admin page, the admin can add in more inventory. 
 -- should the billing info referece the shipping info? 
@@ -86,25 +61,20 @@ update users set is_admin = true where user_id = 1;
 from customer, invoice
 where customer.customerId = invoice.customerId; */
 
--- testing purposes only: 
--- CREATE TABLE uses (
---     id SERIAL PRIMARY KEY,
---     firstName VARCHAR(50),
---     lastName VARCHAR(50),
---     email VARCHAR(100),
---     username VARCHAR(50),
---     password VARCHAR(100)
--- )
 
 
--- CREATE TABLE products (
---     product_Id SERIAL PRIMARY KEY,
---     product_name TEXT,
---     price DECIMAL,
---     category TEXT, 
---     img_url TEXT
--- )
 
 
 INSERT INTO products (product_name, price, category, img_url)
 VALUES('Crown Royal', '44.99','Whiskey', 'https://s3.us-east-2.amazonaws.com/tortuga-assets/crown.jpg');
+CREATE TABLE orders (
+    order_Id SERIAL PRIMARY KEY,
+    firstName VARCHAR(50) REFERENCES users(firstName),
+    lastName VARCHAR(50) REFERENCES users(lastName),
+    customer_Id INT NOT NULL REFERENCES users(customer_Id),
+    category TEXT REFERENCES products(category), 
+    product_Id INT NOT NULL REFERENCES products(product_Id),
+    price DECIMAL REFERENCES products(price),
+    product_name TEXT REFERENCES products(product_name),
+    order_date DATE REFERENCES checkout(order_date)
+);

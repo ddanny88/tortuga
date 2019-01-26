@@ -7,7 +7,7 @@
     justify-content: space-between;
     padding-top: 15px;
     /* position: sticky;
-    top: 0; */
+    top: 0; */ 
 }
 .current_user{
     color: white;
@@ -38,7 +38,7 @@
 
 .main-logo{
     margin-left: 100%;
-    width: 90px;
+    width: 150px;
     height: 40px;
 }
 .main-nav{

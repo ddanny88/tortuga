@@ -6,6 +6,7 @@ import FinalCheckout from '../FinalCheckout/FinalCheckout';
 
 class Checkout extends Component {
     render() {
+        console.log('from iside checkout', this.props)
         return (
             <div className="main-checkout">
                 <FinalCheckout />

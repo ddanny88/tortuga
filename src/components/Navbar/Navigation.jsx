@@ -7,23 +7,27 @@ import Login from '../Login/Login';
 import axios from 'axios';
 import'./nav.css';
 
-class Navigation extends Component {  
+class Navigation extends Component { 
     componentDidMount(){
         this.props.getCart()
-        window.addEventListener("scroll", this.handleScroll)
-    }
-    // scroll animation: references the parent element in the component: 
-    handleScroll = () => {
-         requestAnimationFrame(()=> {
-             if(window.scrollY>200){
-                this.nav.current.style.position = "sticky";
-                this.nav.current.style.top = "0";
-             } else{
-                 this.nav.current.style.position = "static"
-             }
-         })
-    }
-    nav = React.createRef()
+    } 
+    
+    // componentDidMount(){
+    //     this.props.getCart()
+    //     window.addEventListener("scroll", this.handleScroll)
+    // }
+    // // scroll animation: references the parent element in the component: 
+    // handleScroll = () => {
+    //      requestAnimationFrame(()=> {
+    //          if(window.scrollY>200){
+    //             this.nav.current.style.position = "sticky";
+    //             this.nav.current.style.top = "0";
+    //          } else{
+    //              this.nav.current.style.position = "static"
+    //          }
+    //      })
+    // }
+    // nav = React.createRef()
 
    
    
@@ -38,6 +42,7 @@ class Navigation extends Component {
                 if(this.props.isAdmin){
                     this.props.updateAdmin(false);
                 }
+                this.props.getCart();
             })
     }
 

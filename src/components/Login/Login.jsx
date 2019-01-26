@@ -38,7 +38,7 @@ class Login extends Component {
             .then( user => {
                 // console.log(user.data.isAdmin)
                 if(user.data.isAdmin){
-                    this.props.updateAdmin(true);
+                    this.props.updateAdmin(user.data.isAdmin);
                     this.updateCurrentUser(user.data.username);
                     this.props.toggleModal(false);
 

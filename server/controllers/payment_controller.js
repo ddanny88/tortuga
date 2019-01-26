@@ -32,9 +32,11 @@ const takePayment = (req, res) => {
 const checkoutInfo = (req, res) => {
     const db = req.app.get('db');
     const {  phone, address, city, st, zipcode } = req.body;
-        db.checkout_info(phone, address, city, st, zipcode)
+    const { user_id } = req.session.user;
+    // console.log(req.session.user)
+        db.checkout_info(phone, address, city, st, zipcode, user_id) //need user_id 
         .then( response => {
-            console.log(response)
+            // console.log(response)
             let checkoutInfo = response[0];
 
             req.session.user = {
@@ -64,7 +66,7 @@ const updateCheckout = (req, res) => {
     db.update_checkout(phone, address, city, st, zipcode, req.params.id)
         .then( response => {
             let updatedInfo = response[0];
-            console.log(updatedInfo)
+            // console.log(updatedInfo)
 
             req.session.user = {
                 ...req.session.user,
@@ -81,10 +83,55 @@ const updateCheckout = (req, res) => {
         })
 }
 
+
+   //TEST THIS!!!!!!!!
+const orderInfo = (req, res) => {    
+    const db = req.app.get('db');
+
+    let total = req.session.cart[req.session.cart.length - 1].total;
+    let cart = req.session.cart;
+    let checkoutID = req.session.user.checkoutId
+    let category = '';
+    for (let i = 0; i < cart.length; i++) {
+         if(cart[i].category){
+            category += `${req.session.cart[i].category}`;
+            if(i < cart.length - 1){
+                category += ",";
+            }
+         }
+    }
+
+    db.order_info(category, total, checkoutID)
+        .then( () => {
+            res.sendStatus(200);
+        })
+        .catch( err => {
+            console.log(err);
+        });
+}
+   //TEST THIS!!!!!!!!
+const getOrders = (req, res) => {
+    const db = req.app.get('db')
+    db.get_order()
+        .then( orders => {
+            res.status(200).json(orders)
+        })
+        .catch( err => {
+            console.log(err)
+        });
+}       
+
+
+
+
+
+
 module.exports = {
     takePayment, 
     checkoutInfo, 
-    updateCheckout
+    updateCheckout,
+    orderInfo,
+    getOrders
 }
 
 

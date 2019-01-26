@@ -151,7 +151,7 @@ class FinalCheckout extends Component {
                             class="inputfile" 
                             onChange={this.handleFile}
                         />
-                        <label for="file"><i class="fas fa-camera"></i></label>
+                        <label for="file"><i className="fas fa-camera"></i></label>
                     </form>
             </div>
         );

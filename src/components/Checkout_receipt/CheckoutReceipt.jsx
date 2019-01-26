@@ -20,6 +20,17 @@ class CheckoutReceipt extends Component {
             })
     }
     
+
+
+    handleTest = () => {
+        axios.get('/api/orderinfo')
+            .then( response => {
+                console.log(response)
+            })  
+            .catch( err => {
+                console.log("****", err)
+            })
+    }
     render() {
         let drinks = this.state.cart.map( drank => (
             <p>{drank.product_name}...${drank.price}</p>
@@ -40,6 +51,7 @@ class CheckoutReceipt extends Component {
             <p>tax: ${tax}</p>
             <p>total: ${total}</p>
             <Payment />
+            <button onClick={this.handleTest}>  test  </button>
 
             </div>
         );

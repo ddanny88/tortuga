@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import './payment.css';
  
 
 class Payment extends Component {
@@ -17,20 +18,25 @@ class Payment extends Component {
   }
  
   render() {
+      
     return (
-        <div className="payment-btn">
-            <StripeCheckout
-                name="Tortuga"
-                description="Alcohol Delivery"
-                panelLabel="complete purchase"
-                // amount={} //cents
-                currency='USD'
-                billingAddress={true}
-                zipCode={true}
-                allowRememberMe={true}
-                token={this.onToken}
-                stripeKey="pk_test_I1su1HpYzoQpKkC2Dt3xFHnB"
-            />
+        <div>
+            <div className="payment-btn">
+                <StripeCheckout
+                    ComponentClass=""
+                    name="Tortuga"
+                    description="Alcohol Delivery"
+                    panelLabel="complete purchase"
+                    // amount={} //cents
+                    currency='USD'
+                    billingAddress={true}
+                    zipCode={true}
+                    allowRememberMe={true}
+                    token={this.onToken}
+                    stripeKey="pk_test_I1su1HpYzoQpKkC2Dt3xFHnB"
+                />
+            </div>
+            {/* <button type="submit"> pay here</button> */}
         </div>
     )
   }

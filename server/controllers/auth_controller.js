@@ -50,7 +50,8 @@ const register = (req, res) => {
                         username: user.username,
                         firstName: user.firstname,
                         lastName: user.lastname,
-                        email: user.email
+                        email: user.email,
+                        user_id: user.user_id
                     }
                     // console.log(req.session.user);
                     res.status(200).json(req.session.user)

@@ -36,8 +36,8 @@ app.use(
 
 
 
-//AWS: 
-app.post('/api/upload',aws.uploadFile);
+// //AWS: 
+// app.post('/api/upload',aws.uploadFile);
 
 
 // AUTHORIZATION: 
@@ -60,8 +60,9 @@ app.delete('/api/cart/:id', cc.removeItem);
 app.post('/api/charge', checkCart, pay_controller.takePayment);
 app.post('/api/checkoutinfo', checkCart, pay_controller.checkoutInfo );
 app.put('/api/updatecheckout/:id', pay_controller.updateCheckout);
-//ADD PRODUCT: 
 app.post('/api/addproduct', proController.addNewProduct);
+app.get('/api/orderinfo', pay_controller.orderInfo);
+app.get('/api/getorders', pay_controller.getOrders);
 //CHART DATA:
 app.get('/api/getchartdata')
 //ADMIN ACCESS: 
