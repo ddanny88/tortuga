@@ -35,9 +35,7 @@ CREATE TABLE checkout (
 CREATE TABLE orders (
     order_Id SERIAL PRIMARY KEY,
     product_category VARCHAR(50),
-    price DECIMAL,
     checkout_Id INT NOT NULL REFERENCES checkout(checkout_Id),
-    product_name VARCHAR(50),
     order_total DECIMAL
 );
 

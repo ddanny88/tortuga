@@ -154,26 +154,26 @@ const getProductCategories = (req, res) => {
                     wineCount = wineCount + 1;
                 } else if(categoryArray[i] === 'Beer'){
                     beerCount = beerCount + 1;
-                } else {
+                } else if(categoryArray[i] === 'Liquor')
                     liquorCount = liquorCount + 1;
                 }
             }   
 
             let chartData = {
-                labels: ['Liquor', 'Wine', 'Beer'],
-                datasets: [
-                    {
-                        label: 'YTD Quantity',
-                        data: [liquorCount, wineCount, beerCount],
-                        backgroundColor:[
-                            "rgba(255,99,123,0.6)",
-                            "rgba(255,159,64,0.6)",
-                            "rgba(75,192,192,0.6)"
-                        ]
-                    }
-                ]
-            }
-            res.status(200).json(chartData)
+                    labels: ['Liquor', 'Wine', 'Beer'],
+                    datasets: [
+                        {
+                            label: 'YTD Quantity Sold',
+                            data: [liquorCount, wineCount, beerCount],
+                            backgroundColor:[
+                                "rgba(255,99,123,0.6)",
+                                "rgba(255,159,64,0.6)",
+                                "rgba(75,192,192,0.6)"
+                            ]
+                        }
+                    ]
+                }
+            res.status(200).json(chartData);
         })
         .catch(err => {
             console.log(err)

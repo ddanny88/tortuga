@@ -54,17 +54,19 @@ class Admin extends Component {
         const { productName, price, category, img_url } =  this.props;
         return (
             <div className="admin-container">
-                This is the Admin page:
-
                 {/* THE CHART COMPONENT:  */}
                 <ChartComponent />
               
                 <div>
+                    <br/>
+                    <br/>
                     <hr className="admin-rule"/>
+                    <br/>
+                    <br/>
                    
                 </div>
+                <h3>ADMIN CONTROLS: </h3>
                 <div className="admin-control">
-                    Admin Controls: 
                     <button className="control-button" onClick={this.displayControl}>Add Item</button>
                 </div>
                 {this.state.displayAddItem ? (
@@ -102,7 +104,8 @@ class Admin extends Component {
                       </div>
                     </div>
                 ) : null}
-                ORDER LOOKUP: access certain order through form that querys the orders database
+
+                <h3>ORDER LOOKUP: </h3>
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Bar  } from 'react-chartjs-2';
+import { Pie  } from 'react-chartjs-2';
 import axios from 'axios';
 
 // import {} from '../../ducks/reducer';
@@ -31,7 +31,7 @@ class ChartComponent extends Component {
     render(){
         return (
             <div>
-                <Bar
+                <Pie
                     data={ this.state.chartData }
                     width={400}
                     height={400}
