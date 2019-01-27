@@ -4,7 +4,7 @@
     font-size: 20px;
 }
 .hero-img{
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../../assets/images/wine_hero10.png');
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://s3.us-east-2.amazonaws.com/tortuga-slider/finishedHero2.png');
     width: 100vw;
     height: 100vh;
     background-repeat: no-repeat;

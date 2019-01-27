@@ -1,5 +1,5 @@
 .admin-container{
-    background: white;
+    background: gray;
     width: 100vw;
     height: 100vh;
 }
@@ -33,7 +33,7 @@
     
     width: 30vw;
     height: 50vh;
-    background: gray;
+    background: darkgray;
     border: none;
     border-radius: 10px;
     position: absolute;

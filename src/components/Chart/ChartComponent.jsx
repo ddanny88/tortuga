@@ -41,7 +41,7 @@ class ChartComponent extends Component {
                         title: {
                             display: true,
                             text: "Tortuga Analytics",
-                            fontSize: 30
+                            fontSize: 30,
                         }
                     }}
                 />

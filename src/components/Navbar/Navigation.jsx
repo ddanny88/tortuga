@@ -8,8 +8,8 @@ import axios from 'axios';
 import'./nav.css';
 
 class Navigation extends Component { 
+
     componentDidMount(){
-        //get session
         axios.get('/api/getfullsession')
         .then(response => {
             if(response.data.user.isAdmin){
@@ -17,11 +17,9 @@ class Navigation extends Component {
             }
             this.props.getCart()
         })
-        //check if isAdmin = true
-        // set state in redux 
         .catch(err => {
             console.log(err)
-        })
+        });
     } 
     
     // componentDidMount(){
@@ -75,8 +73,17 @@ class Navigation extends Component {
                             {this.props.currentUsername ? <li className="current_user"> @{this.props.currentUsername}</li> : <li><Link to="/"><button className="login-button" onClick={ this.handleModal }>login</button></Link></li>}
                             {this.props.currentUsername ? <li><button className="sign_out_button" onClick={this.signOut}>sign out</button></li>: null}
                           
-                            <div className="item-count"></div>
-                            <div className="item-count1">{cartLength}</div>
+                            {!this.props.isAdmin ? (
+                               <>
+                                <div className="item-count"></div>
+                                <div className="item-count1">{cartLength}</div>
+                               </>
+                            ) : (
+                                <>
+                                <div className="item-count hide-count-icon"></div>
+                                <div className="item-count1 hide-count-icon">{cartLength}</div>
+                                </>
+                            )}
 
                             {this.props.isAdmin ? <li><Link to="/login/admin"><button className="dash-btn">T</button></Link></li> : <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li> }
                         </ul>
