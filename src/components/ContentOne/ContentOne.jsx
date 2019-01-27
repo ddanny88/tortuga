@@ -14,7 +14,10 @@ const ContentOne = (props) => {
             </div>
 
             <div className="text-containerOne">
-                <p className="quote1">"Drinking rum before 10am makes you a pirate, not an alcoholic."</p>
+                {/* <p className="quote1">"Drinking rum before 10am makes you a pirate, not an alcoholic."</p> */}
+                <img src="https://s3.us-east-2.amazonaws.com/tortuga-assets/money_shot.jpg" alt="money"
+                className="money-shot"
+                />
             </div>
         </div>
     )

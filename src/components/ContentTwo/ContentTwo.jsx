@@ -7,7 +7,9 @@ const ContentTwo = (props) => {
         <div className="contentTwo-container">
 
             <div className="text-containerTwo">
-                text goes here
+                <img src="https://s3.us-east-2.amazonaws.com/tortuga-assets/Tullamore.jpg" alt="money"
+                className="product-shot"
+                />
             </div>
             <div>
                 <img 

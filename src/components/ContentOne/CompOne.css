@@ -1,7 +1,8 @@
 .contentOne-container{
     display: flex;
     width: 100vw;
-    background: gainsboro;
+    background: white;
+    border-top: 1px solid black;
 }
 
 .text-containerOne{
@@ -20,4 +21,10 @@
     font-size: 20px;
     font-family: 'Arimo', sans-serif;
     font-style: italic;
+}
+
+.money-shot{
+    width: 40%;
+    height: 90%;
+    
 }

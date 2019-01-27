@@ -62,7 +62,7 @@ class CheckoutReceipt extends Component {
             <p>tax: ${tax}</p>
             <p>total: ${total}</p>
             <Payment />
-            <Link to="/receipt"><button onClick={this.handleOrder}>SET SAIL!</button></Link>
+            <Link to="/receipt"><button className ="set-sail" onClick={this.handleOrder}>SET SAIL!</button></Link>
 
             </div>
         );

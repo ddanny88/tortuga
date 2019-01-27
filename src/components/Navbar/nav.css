@@ -112,3 +112,14 @@
     height: 30%;
     margin: 5%;
 }
+
+.dash-btn{
+    border: none;
+    background: orangered;
+    font-size: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+    color: white;
+    width: 40px;
+    height: 40px;
+}

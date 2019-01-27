@@ -9,7 +9,19 @@ import'./nav.css';
 
 class Navigation extends Component { 
     componentDidMount(){
-        this.props.getCart()
+        //get session
+        axios.get('/api/getfullsession')
+        .then(response => {
+            if(response.data.user.isAdmin){
+                this.props.updateAdmin(response.data.user.isAdmin)
+            }
+            this.props.getCart()
+        })
+        //check if isAdmin = true
+        // set state in redux 
+        .catch(err => {
+            console.log(err)
+        })
     } 
     
     // componentDidMount(){
@@ -66,7 +78,7 @@ class Navigation extends Component {
                             <div className="item-count"></div>
                             <div className="item-count1">{cartLength}</div>
 
-                            {this.props.isAdmin ? <li><Link to="/login/admin"><button>admin stuff</button></Link></li> : <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li> }
+                            {this.props.isAdmin ? <li><Link to="/login/admin"><button className="dash-btn">T</button></Link></li> : <li><Link to="/cart"><i className="fas fa-shopping-cart"></i></Link></li> }
                         </ul>
                 </div> 
                 <Modal display={ this.props.openModal } toggleDisplay={ this.handleModal }  ModalContent={ Login } />

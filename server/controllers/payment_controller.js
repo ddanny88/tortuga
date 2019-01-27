@@ -157,7 +157,7 @@ const getProductCategories = (req, res) => {
                 } else if(categoryArray[i] === 'Liquor')
                     liquorCount = liquorCount + 1;
                 }
-            }   
+               
 
             let chartData = {
                     labels: ['Liquor', 'Wine', 'Beer'],
