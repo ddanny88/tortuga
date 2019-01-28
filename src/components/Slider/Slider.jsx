@@ -12,23 +12,24 @@ class Slider extends Component {
             <div className="slider">
                <figure>
                     <div id="one" className="slide">
-                        <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/sliderOne.png" alt="slide-one"/>
+                        <p className="hero-text">Hello</p>
+                        <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/thewinefine.png" alt="slide-one"/>
                     </div>
 
                     <div id="two" className="slide">
-                        <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/sliderTwo.png" alt="slide-two"/>
+                        <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/finishLiquor.png" alt="slide-two"/>
                     </div>
                     
                     <div id="three" className="slide">
-                        <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/contentOne.png" alt="slide-three"/>
+                        <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/finishGin.png" alt="slide-three"/>
                     </div>
 
                     <div id="four" className="slide">
-                        <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/white_liquor2.png" alt="slide-three"/>
+                        <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/finishBlack.png" alt="slide-three"/>
                     </div>
 
                     <div id="four" className="slide">
-                        <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/heroIMG.jpeg" alt="slide-three"/>
+                        <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/finishPool.png" alt="slide-three"/>
                     </div>
                </figure>
             </div>

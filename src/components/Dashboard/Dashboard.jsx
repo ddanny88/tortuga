@@ -3,6 +3,7 @@ import MiddleContent from '../MiddleContent/MiddleContent';
 import ContentOne from '../ContentOne/ContentOne';
 import ContentTwo from '../ContentTwo/ContentTwo';
 import'./dash.css';
+import Slider from '../Slider/Slider';
 
 
 
@@ -16,9 +17,8 @@ class Dashboard extends Component {
         return (
             <div>
                 <div className="hero-img">
-                
-                    <h1 className="main-heading">Main welcome message goes here!</h1>
-                    <button className="hero-btn">More Info</button>
+                <Slider/>
+                    {/* <h1 className="main-heading">Main welcome message goes here!</h1> */}
                 </div>
               
 
