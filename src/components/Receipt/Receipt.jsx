@@ -5,7 +5,12 @@ class Receipt extends Component {
     render() {
         return (
             <div className="receipt-container">
-                THANK YOU FOR YOUR PURCHASE 
+            <h2>Thank you for your purchase!</h2>
+               <div>
+                <img src="https://s3.us-east-2.amazonaws.com/tortuga-assets/pirate-ship.png" 
+                alt="ship"
+               />
+               </div>
             </div>
         );
     }

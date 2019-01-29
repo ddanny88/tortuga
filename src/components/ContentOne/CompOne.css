@@ -2,7 +2,6 @@
     display: flex;
     width: 100vw;
     background: white;
-    border-top: 1px solid black;
 }
 
 .text-containerOne{
@@ -26,5 +25,6 @@
 .money-shot{
     width: 40%;
     height: 90%;
+    /* border-radius: 50%; */
     
 }

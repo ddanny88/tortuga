@@ -60,8 +60,8 @@ app.post('/api/checkoutinfo', checkCart, pay_controller.checkoutInfo );
 app.put('/api/updatecheckout/:id', pay_controller.updateCheckout);
 app.post('/api/addproduct', proController.addNewProduct);
 app.post('/api/orderinfo', pay_controller.orderInfo);
-app.get('/api/getorders', pay_controller.getOrders);
 app.get('/api/getcategories', pay_controller.getProductCategories);
+app.post('/api/getorderinfo', pay_controller.getOrderInfo);
 //CHART DATA:
 // app.get('/api/getchartdata')
 //ADMIN ACCESS: 

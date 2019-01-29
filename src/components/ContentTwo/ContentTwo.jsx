@@ -7,13 +7,11 @@ const ContentTwo = (props) => {
         <div className="contentTwo-container">
 
             <div className="text-containerTwo">
-                <img src="https://s3.us-east-2.amazonaws.com/tortuga-assets/Tullamore.jpg" alt="money"
-                className="product-shot"
-                />
+               <h3>"Drinking before 10am makes you a pirate, not an alcoholic."</h3>
             </div>
             <div>
                 <img 
-                    src="https://s3.us-east-2.amazonaws.com/drank-content/ContTwo.png" 
+                    src="https://s3.us-east-2.amazonaws.com/tortuga-assets/beershot.jpg" 
                     alt="drinks on a table"
                     className="content-img2"
                 />

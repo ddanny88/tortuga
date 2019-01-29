@@ -18,7 +18,6 @@ class Dashboard extends Component {
             <div>
                 <div className="hero-img">
                 <Slider/>
-                    {/* <h1 className="main-heading">Main welcome message goes here!</h1> */}
                 </div>
               
 
@@ -36,11 +35,11 @@ class Dashboard extends Component {
                     <hr className="featured-rule"/>
                 </div>
                     <MiddleContent />
+
             </div>
         );
     }
 }
-
 
 export default Dashboard;
 

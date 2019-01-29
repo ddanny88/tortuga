@@ -4,6 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { addProductName, addProductPrice, addProductCategory, addProductImgUrl, clearInput} from '../../ducks/reducer';
 import'./admin.css';
+import OrderLookup from '../OrderLookup/OrderLookup';
 
 
 
@@ -65,10 +66,11 @@ class Admin extends Component {
                     <br/>
                    
                 </div>
-                <h3>ADMIN CONTROLS: </h3>
+                <h3 className="control-txt" >ADMIN CONTROLS: </h3>
                 <div className="admin-control">
                     <button className="control-button" onClick={this.displayControl}>Add Item</button>
                 </div>
+
                 {this.state.displayAddItem ? (
                     <div className="item-form">
 
@@ -105,7 +107,8 @@ class Admin extends Component {
                     </div>
                 ) : null}
 
-                <h3>ORDER LOOKUP: </h3>
+                <h3 className="control-txt" >ORDER LOOKUP: </h3>
+                <OrderLookup />
             </div>
         );
     }

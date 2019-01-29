@@ -111,28 +111,19 @@ const orderInfo = (req, res) => {
 
 
 // used in cart.js needs sum function 
-const getOrders = (req, res) => {
-    const db = req.app.get('db')
-    db.get_order()
-        .then( orders => {
-            res.status(200).json(orders)
+const getOrderInfo = (req, res) => {
+    const db = req.app.get('db');
+
+    db.get_order_deets(req.body.orderId)
+        .then( response => {
+            let order = response[0];
+            console.log(order)
+            res.status(200).json(order)
         })
         .catch( err => {
-            console.log(err)
+            console.log(err);
         });
 }       
-
-const getFullOrder = (req, res) => {
-    const db = req.app.get('db');
-    db.get_full_order()
-        .then(response => {
-            res.status(200).json(response)
-        })
-        .catch(err => {
-            console.log(err)
-        });
-}
-
 
 
 //RETURNS AN ARRAY OF category counts: 
@@ -181,12 +172,6 @@ const getProductCategories = (req, res) => {
 }
 
 
-const getTotal = (req, res) => {
-    const db = req.app.get('db');
-
-    db.get_total()
-        .then()
-}
 
 
 
@@ -195,10 +180,8 @@ module.exports = {
     checkoutInfo, 
     updateCheckout,
     orderInfo,
-    getOrders, 
-    getFullOrder, 
+    getOrderInfo,
     getProductCategories, 
-    getTotal
 }
 
 

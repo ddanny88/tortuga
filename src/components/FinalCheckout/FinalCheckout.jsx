@@ -153,6 +153,7 @@ class FinalCheckout extends Component {
                         />
                         <label for="file"><i className="fas fa-camera"></i></label>
                     </form>
+                        <p className="fine-print" >If the documented person and or person over 21 is not available to receive this order it will be returned for a $20 restocking fee. Valid Government ID required.</p>
             </div>
         );
     }

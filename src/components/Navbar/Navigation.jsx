@@ -6,6 +6,7 @@ import Modal from '../Modal/Modal';
 import Login from '../Login/Login';
 import axios from 'axios';
 import'./nav.css';
+// import PropTypes from 'prop-types';
 
 class Navigation extends Component { 
 
@@ -94,6 +95,7 @@ class Navigation extends Component {
     }
 }
 
+
 const mapStateToProps = (state) => {
     const { openModal, displayLoginContent, currentUsername, isAdmin, cart } = state;
     return {
@@ -104,5 +106,6 @@ const mapStateToProps = (state) => {
         cart
     }
 }
+
 
 export default connect(mapStateToProps, { toggleModal, toggleContent, updateCurrentUsername, toggleFormDisplay, updateAdmin, getCart})(Navigation);

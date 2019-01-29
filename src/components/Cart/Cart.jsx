@@ -49,9 +49,9 @@ class Cart extends Component {
         return (
 
             <div className="cart-container">
-                This is your cart.
+               
 
-
+                
                 <div className="middle-content">
                 <div className="cart-itmes">
                     { cartItems }
@@ -64,7 +64,6 @@ class Cart extends Component {
                     <CheckoutCard />
                 </div>
                 
-               
             </div>
         );
     }

@@ -7,7 +7,11 @@ class Footer extends Component {
             <div>
                 <div>
                     <footer className="footer-container">
-                        <p>CONNECT</p>
+                        <div>
+                            <p className="footer-txt" >CONTACT</p>
+                            <p className="footer-txt" >(800)123-4567</p>
+                            <p className="footer-txt" >help@tortuga.com</p>
+                        </div>
                         <div className="social-content">
                                 <i className="fab fa-instagram"></i>
                                 <i className="fab fa-facebook"></i>
