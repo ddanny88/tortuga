@@ -28,7 +28,7 @@
     font-size: 18px;
 }
 .card-btn{
-    background: black;
+    background: #781214;
     margin-top: 50px;
     font-size: 20px;
     color: white;
@@ -41,3 +41,10 @@
     background: rgb(37, 37, 37);
 }
 
+/* .shadow{
+    width: 250px;
+    height: 300px;
+} 
+.shadow:hover{
+    background: rgba(0,0,0,0.7);
+} */

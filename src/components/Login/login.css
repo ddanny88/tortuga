@@ -60,7 +60,7 @@
     margin: 10px;
     border-radius: 5px;
     border: none;
-    background: red;
+    background: #781214;
     width: 8vw;
     height: 5vh;
     color: white;
@@ -87,7 +87,7 @@
     margin: 10px;
     border-radius: 5px;
     border: none;
-    background: blue;
+    background: navy;
     width: 8vw;
     height: 5vh;
     color: white;
@@ -97,6 +97,9 @@
     width: 8vw;
     height: 8vh;
     margin-bottom: 5px;
+}
+.register-btn:hover{
+    background: black;
 }
 
 

@@ -13,7 +13,7 @@
 
 .edit-btn{
     width: 100px;
-    background: red;
+    background: #781214;
     border: none;
     color: white;
     font-size: 18px;
@@ -38,7 +38,7 @@
 .submit-btn{
     margin-top: 5px;
     border-radius: 5px;
-    background: red;
+    background: #781214;
     color: white;
     border: none;
     width: 100px;
@@ -75,7 +75,7 @@
 
 .inputfile + label {
     font-size: px;
-    color: red;
+    color: #781214;
     /* background-color: red; */
     display: inline-block;
 }

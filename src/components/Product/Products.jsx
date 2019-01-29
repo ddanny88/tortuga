@@ -25,6 +25,9 @@ const Product = (props) => {
                 className="card-btn">
                 <i className="fas fa-cart-plus"></i>
             </button>
+            <div className="shadow">
+
+            </div>
         </div>
     )
 }
