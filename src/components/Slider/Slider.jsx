@@ -27,7 +27,7 @@ class Slider extends Component {
                     </div>
 
                     <div id="four" className="slide">
-                        <p className="hero-textFour">WELCOME TO TORTUGA</p>
+                        <p className="hero-textFour">Join Premium</p>
                         <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/finishBlack.png" alt="slide-three"/>
                     </div>
 

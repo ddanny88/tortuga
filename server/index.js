@@ -15,6 +15,13 @@ const proController = require('./controllers/prod_controller');
 const app = express();
 app.use(json());
 
+
+app.use( express.static( `${__dirname}/../build` ) );
+
+
+
+
+
 //connecting to the databse:
 massive(process.env.CONNECTION_STRING).then(db => {
   app.set("db", db);

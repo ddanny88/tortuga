@@ -42,6 +42,7 @@
     animation: 40s slidy infinite;
 }
 
+
 @keyframes slidy {
     0% {
         left: 0%;

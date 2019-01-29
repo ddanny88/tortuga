@@ -16,6 +16,7 @@ class Navigation extends Component {
             if(response.data.user.isAdmin){
                 this.props.updateAdmin(response.data.user.isAdmin)
             }
+            // window.addEventListener("scroll", this.handleScroll)
             this.props.getCart()
         })
         .catch(err => {
@@ -23,11 +24,8 @@ class Navigation extends Component {
         });
     } 
     
-    // componentDidMount(){
-    //     this.props.getCart()
-    //     window.addEventListener("scroll", this.handleScroll)
-    // }
-    // // scroll animation: references the parent element in the component: 
+
+    // scroll animation: references the parent element in the component: 
     // handleScroll = () => {
     //      requestAnimationFrame(()=> {
     //          if(window.scrollY>200){
