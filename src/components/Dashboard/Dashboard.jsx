@@ -24,7 +24,7 @@ class Dashboard extends Component {
                <div className="middle-mission-content">
                     <h2 className="mission">BRINGING THE PARTY TO YOU SINCE 2019</h2>
                     <hr className="mission-rule"/>
-                    <p className="statement">At Tortuga, This is a mission statement that will make you buy alcohol which means more money for me.</p>
+                    <p className="statement">At Tortuga, we take pride in providing you with all of your beverage needs.</p>
                </div>
 
                     <ContentOne />

@@ -1,10 +1,9 @@
 .final-container{
     width: 40vw;
-    height: 90vh;
+    height: 92vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 1px solid red; */
     background: gainsboro;
     border-radius: 5px;
     margin-left: 8%;
@@ -34,7 +33,9 @@
     border: none;
     margin: 2px;
 }
-
+.form-txt{
+    font-size: 15px;
+}
 .submit-btn{
     margin-top: 5px;
     border-radius: 5px;
@@ -74,7 +75,7 @@
 }
 
 .inputfile + label {
-    font-size: px;
+   
     color: #781214;
     /* background-color: red; */
     display: inline-block;

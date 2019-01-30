@@ -118,11 +118,11 @@ class FinalCheckout extends Component {
                {
                    !this.state.editInfo ?  
                   <div>
-                    {user && <p>Delivery Address: {user.address}</p>}
-                    {user && <p>City: {user.city}</p>}
-                    {user && <p>State: {user.state}</p>}
-                    {user && <p>Zipcode: {user.zipcode}</p>}
-                    {user && <p>Phone: {user.phone}</p>}
+                    {user && <p class="form-txt">Delivery Address: {user.address}</p>}
+                    {user && <p class="form-txt">City: {user.city}</p>}
+                    {user && <p class="form-txt">State: {user.state}</p>}
+                    {user && <p class="form-txt">Zipcode: {user.zipcode}</p>}
+                    {user && <p class="form-txt">Phone: {user.phone}</p>}
                     <button onClick={this.handleEdit} className="edit-btn">edit info</button>
                   </div> 
                   : 

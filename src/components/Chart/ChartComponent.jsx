@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Pie  } from 'react-chartjs-2';
+import { Doughnut  } from 'react-chartjs-2';
 import axios from 'axios';
 
 // import {} from '../../ducks/reducer';
@@ -31,10 +31,10 @@ class ChartComponent extends Component {
     render(){
         return (
             <div>
-                <Pie
+                <Doughnut
                     data={ this.state.chartData }
-                    width={550}
-                    height={550}
+                    width={300}
+                    height={300}
                     options={{
                         responsive: true,
                         maintainAspectRatio: false,

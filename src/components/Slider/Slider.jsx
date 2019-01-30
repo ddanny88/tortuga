@@ -22,17 +22,15 @@ class Slider extends Component {
                     </div>
                     
                     <div id="three" className="slide">
-                        <p className="hero-textThree">WELCOME TO TORTUGA</p>
                         <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/finishGin.png" alt="slide-three"/>
                     </div>
 
                     <div id="four" className="slide">
-                        <p className="hero-textFour">Join Premium</p>
                         <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/finishBlack.png" alt="slide-three"/>
                     </div>
 
                     <div id="four" className="slide">
-                        <p className="hero-textFive">WELCOME TO TORTUGA</p>
+                        <p className="hero-textFive">BRINGING THE PARTY TO YOU</p>
                         <img src="https://s3.us-east-2.amazonaws.com/tortuga-slider/finishPool.png" alt="slide-three"/>
                     </div>
                </figure>
