@@ -5,6 +5,7 @@ import store from './store';
 import routes from './routes';
 import Navigation from './components/Navbar/Navigation';
 import Footer from './components/footer/Footer';
+import ReactGA from 'react-ga';
 
 class App extends Component {
   render() {
@@ -19,5 +20,18 @@ class App extends Component {
     );
   }
 }
+function initializeReactGA(){
+    ReactGA.initialize('UA-133756566-1');
+    ReactGA.pageview('/');
+}
+initializeReactGA();
 
 export default App;
+
+
+
+// track events: 
+// ReactGA.event({
+//   category: 'User',
+//   action: 'Create an Account'
+// });
