@@ -10,3 +10,8 @@ Tortuga is an alcohol delivery web application that gives the user the flexibili
 * bcrypt.js
 * Chart.js
 * Stripe
+
+## Run app:
+* start the server by running the command `nodemon sever`
+* next, run `npm start`
+
