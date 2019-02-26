@@ -15,3 +15,5 @@ Tortuga is an alcohol delivery web application that gives the user the flexibili
 * start the server by running the command `nodemon sever`
 * next, run `npm start`
 
+[![tortuga home page](https://s3.us-east-2.amazonaws.com/tortuga-read-me/homepage.png)
+
