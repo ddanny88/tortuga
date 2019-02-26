@@ -16,4 +16,6 @@ Tortuga is an alcohol delivery web application that gives the user the flexibili
 * next, run `npm start`
 
 [![tortuga home page](https://s3.us-east-2.amazonaws.com/tortuga-read-me/homepage.png)
+[![product page](https://s3.us-east-2.amazonaws.com/tortuga-read-me/Tortuga+-+Google+Chrome+2_26_2019+2_44_45+PM.png)
+[![stripe](https://s3.us-east-2.amazonaws.com/tortuga-read-me/Tortuga+-+Google+Chrome+2_26_2019+2_45_38+PM.png)
 
