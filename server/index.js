@@ -16,6 +16,8 @@ const app = express();
 app.use(json());
 
 
+
+// required for hosting
 app.use( express.static( `${__dirname}/../build` ) );
 
 
